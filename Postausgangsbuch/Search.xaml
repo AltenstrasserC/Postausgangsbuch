@@ -1,0 +1,58 @@
+﻿<Window x:Class="Postausgangsbuch.Search"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:local="clr-namespace:Postausgangsbuch"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:model="clr-namespace:FilterLib;assembly=FilterLib"
+        mc:Ignorable="d"
+        Title="Suchen" Height="471" Width="808"
+        WindowStartupLocation="CenterScreen"
+        Closed="Window_Closed">
+    <Window.DataContext>
+        <model:FilterModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <GroupBox Header="Suchen nach" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" FontSize="16">
+                <StackPanel>
+                    <RadioButton Content="Name" x:Name="rdbtn_name" FontSize="16"/>
+                    <RadioButton Content="Datum" x:Name="rdbtn_date" Checked="Rdbtn_date_Checked" Unchecked="Rdbtn_date_Unchecked" FontSize="16"/>
+                    <RadioButton Content="Unternehmen" x:Name="rdbtn_company" FontSize="16"/>
+                    <RadioButton Content="PLZ" x:Name="rdbtn_ZIP" FontSize="16"/>
+                    <RadioButton Content="Sachbearbeiter" x:Name="rdbtn_Clerk" FontSize="16"/>
+                </StackPanel>
+            </GroupBox>
+            <TextBox x:Name="txt_Search" HorizontalAlignment="Left" Margin="10,10,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="133" TextChanged="Txt_Search_TextChanged" FontSize="16"/>
+            <DatePicker x:Name="dpck_DateFirst" HorizontalAlignment="Left" Margin="10,10,0,0"  VerticalAlignment="Top" MinWidth="133" Visibility="Hidden" DisplayDateStart="1900-01-01" />
+            <Button x:Name="datePicked" Content="Datum suchen" Click="DatePicked_Click" Height="20" HorizontalAlignment="Left" Margin="10,10,0,0"  VerticalAlignment="Top" MinWidth="133" Visibility="Hidden"/>
+        </StackPanel>
+
+        <DataGrid x:Name="datagrid_Search" HorizontalAlignment="Left" 
+                  AutoGenerateColumns="False"
+                  CanUserReorderColumns="False" 
+                  IsSynchronizedWithCurrentItem="False"                  
+                  ItemsSource="{Binding Packets}"
+                  Grid.Column="1"
+                  FontSize="14" 
+                  MouseDoubleClick="DataGrid_MouseDoubleClick" 
+                  IsReadOnly="True" 
+                  MinWidth="496"
+                  Margin="10,10,0,10" Width="580">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="ID"/>
+                <DataGridTextColumn Binding="{Binding Sender.Name}" ClipboardContentBinding="{x:Null}" Header="Sender"/>
+                <DataGridTextColumn Binding="{Binding Sender.Adress.City.PostCode}" ClipboardContentBinding="{x:Null}" Header="Sender ZIP"/>
+                <DataGridTextColumn Binding="{Binding Receiver.Name}" ClipboardContentBinding="{x:Null}" Header="Receiver"/>
+                <DataGridTextColumn Binding="{Binding Receiver.Adress.City.PostCode}" ClipboardContentBinding="{x:Null}" Header="Receiver ZIP"/>
+                <DataGridTextColumn Binding="{Binding Typ}" ClipboardContentBinding="{x:Null}" Header="Typ"/>
+                <DataGridTextColumn Binding="{Binding DeliveryDate, Mode=OneWay, StringFormat=dd.MM.yyyy}" ClipboardContentBinding="{x:Null}" Header="DeliveryDate"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

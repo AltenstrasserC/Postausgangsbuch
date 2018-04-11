@@ -10,19 +10,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FilterLib;
+using PabDbLib;
 
 namespace Postausgangsbuch
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Search_Details.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Search_Details : Window
     {
-        public MainWindow()
+        private FilterModel filterModel;
+
+        public Search_Details() => InitializeComponent();
+
+        public Search_Details(FilterModel filterModel)
         {
             InitializeComponent();
+            this.filterModel = filterModel;
+            this.DataContext = filterModel;
         }
     }
 }
