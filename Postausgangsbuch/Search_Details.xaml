@@ -15,7 +15,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -36,7 +37,7 @@
                 <Setter Property="BorderThickness" Value="1"/>
                 <Setter Property="BorderBrush" Value="Black"/>
                 <Setter Property="Margin" Value="2,2,2,2"/>
-                <Setter Property="IsEnabled" Value="False"/>
+                <Setter Property="IsReadOnly" Value="True"/>
             </Style>
         </Grid.Resources>
         <!--#region Labels-->
@@ -50,7 +51,7 @@
         <Label Grid.Column="0" Grid.Row="8" Content="Hausnummer:"/>
         <Label Grid.Column="0" Grid.Row="9" Content="PLZ:"/>
         <Label Grid.Column="0" Grid.Row="10" Content="Ort:"/>
-        <Label Grid.Column="0" Grid.Row="11"/>
+        <Label Grid.Column="0" Grid.Row="11" Content="Unternehmen:"/>
 
         <Label Grid.Column="2" Grid.Row="1" Content="Datei:"/>
         <Label Grid.Column="2" Grid.Row="2" Content="Sachbearbeiter:"/>
@@ -61,6 +62,7 @@
         <Label Grid.Column="2" Grid.Row="8" Content="Hausnummer:"/>
         <Label Grid.Column="2" Grid.Row="9" Content="PLZ:"/>
         <Label Grid.Column="2" Grid.Row="10" Content="Ort:"/>
+        <Label Grid.Column="2" Grid.Row="11" Content="Unternehmen:"/>
         <!--#endregion-->
         <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding SelectedPacket.DeliveryDate, StringFormat=\{0:d.MM.yyyy\}}" />
         <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding SelectedPacket.Typ}"/>
@@ -73,13 +75,14 @@
         <TextBox Grid.Column="1" Grid.Row="8" Text="{Binding SelectedPacket.Receiver.Adress.StreetNr}"/>
         <TextBox Grid.Column="1" Grid.Row="9" Text="{Binding SelectedPacket.Receiver.Adress.City.PostCode}"/>
         <TextBox Grid.Column="1" Grid.Row="10" Text="{Binding SelectedPacket.Receiver.Adress.City.Name}"/>
-
+        <CheckBox Grid.Column="1" Grid.Row="11" IsChecked="{Binding SelectedPacket.Receiver.Business}" IsEnabled="False" Margin="10,5,0,0"/>
+        
         <TextBox Grid.Column="3" Grid.Row="5" Text="{Binding SelectedPacket.Sender.Name}"/>
         <TextBox Grid.Column="3" Grid.Row="6" Text="{Binding SelectedPacket.Sender.Email}"/>
         <TextBox Grid.Column="3" Grid.Row="7" Text="{Binding SelectedPacket.Sender.Adress.StreetName}"/>
         <TextBox Grid.Column="3" Grid.Row="8" Text="{Binding SelectedPacket.Sender.Adress.StreetNr}"/>
         <TextBox Grid.Column="3" Grid.Row="9" Text="{Binding SelectedPacket.Sender.Adress.City.PostCode}"/>
         <TextBox Grid.Column="3" Grid.Row="10" Text="{Binding SelectedPacket.Sender.Adress.City.Name}"/>
-
+        <CheckBox Grid.Column="3" Grid.Row="11" IsChecked="{Binding SelectedPacket.Sender.Business}" IsEnabled="False" Margin="10,5,0,0"/>
     </Grid>
 </Window>

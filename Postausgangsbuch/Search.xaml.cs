@@ -43,7 +43,7 @@ namespace Postausgangsbuch
             
             if (rdbtn_name.IsChecked == true)
             {
-                var list = packetList.Where(x => x.Receiver.Name.StartsWith(searchValue) || x.Sender.Name.StartsWith(searchValue))
+                var list = packetList.Where(x => x.Receiver.Name.ToLower().StartsWith(searchValue) || x.Sender.Name.ToLower().StartsWith(searchValue))
                                      .Select(x => x);
 
                 if (list != null) filterModel.Packets = list.ToList().AsObservableCollection();
@@ -51,7 +51,7 @@ namespace Postausgangsbuch
             else if (rdbtn_company.IsChecked == true)
             {
                 var list = packetList.Where(x => x.Receiver.Business || x.Sender.Business)
-                                     .Where(x => x.Receiver.Name.StartsWith(searchValue) || x.Sender.Name.StartsWith(searchValue))
+                                     .Where(x => x.Receiver.Name.ToLower().StartsWith(searchValue) || x.Sender.Name.ToLower().StartsWith(searchValue))
                                      .Select(x => x).ToList().AsObservableCollection();
                 if (list != null) filterModel.Packets = list;
             }
@@ -69,7 +69,7 @@ namespace Postausgangsbuch
             }
             else if (rdbtn_Clerk.IsChecked == true)
             {
-                var list = packetList.Where(x => x.Clerk.Name.StartsWith(searchValue))
+                var list = packetList.Where(x => x.Clerk.Name.ToLower().StartsWith(searchValue))
                                      .Select(x => x).ToList().AsObservableCollection();
                 if (list != null) filterModel.Packets = list;
             }

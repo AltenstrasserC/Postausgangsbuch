@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postausgangsbuch", "Postausgangsbuch\Postausgangsbuch.csproj", "{D94D2B5D-6445-4A7F-ACB8-123B8AA8142C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilterLib", "FilterLib\FilterLib.csproj", "{ACD81C72-2AE9-4274-88F9-11AA93E25E53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PabDbLib", "..\PabDbLib\PabDbLib\PabDbLib.csproj", "{BDB2AAC6-C21F-4D47-A714-3C2E50ED0F1C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PabDbLib", "PabDbLib\PabDbLib.csproj", "{BDB2AAC6-C21F-4D47-A714-3C2E50ED0F1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

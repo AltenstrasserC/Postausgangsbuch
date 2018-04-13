@@ -23,7 +23,7 @@ namespace Postausgangsbuch
     /// </summary>
     public partial class CreateNewWpf : Window
     {
-        private readonly PabDbLib.PabDBContext db = new PabDbLib.PabDBContext();
+        private readonly PabDBContext db = new PabDBContext();
         private FilterLib.FilterModel filterModel;
         public CreateNewWpf() => InitializeComponent();
 

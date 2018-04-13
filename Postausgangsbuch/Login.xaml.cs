@@ -37,15 +37,12 @@ namespace Postausgangsbuch
         {
             
             var username = txtBxUserName.Text;
-            if ((LoginData.Where(x => x.Name == username).Count() == 1))
+            if ((LoginData.Count(x => x.Name == username)== 1))
             {
-                var login = LoginData.Where(x => x.Name == username)
-                                     .First()
+                var login = LoginData.First(x => x.Name == username)
                                      .Password;
                 if (login.Equals(pwBxPassword.Password))
                 {
-                    lblError.Content = "Sie wurden erfolgreich angemeldet!";
-                    lblError.Foreground = Brushes.Green;
                     filterModel.Clerk = new Clerk {Name = username, Password = pwBxPassword.Password};
                     Overview overview = new Overview(filterModel);
                     overview.Show();

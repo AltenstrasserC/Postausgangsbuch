@@ -171,6 +171,7 @@
             this.Controls.Add(this.metroTile1);
             this.Name = "Overview";
             this.Text = "Overview";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Overview_FormClosed);
             this.Load += new System.EventHandler(this.Overview_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

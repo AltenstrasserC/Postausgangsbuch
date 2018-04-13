@@ -222,13 +222,13 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\PabDbLib\PabDbLib\PabDbLib.csproj">
-      <Project>{bdb2aac6-c21f-4d47-a714-3c2e50ed0f1c}</Project>
-      <Name>PabDbLib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FilterLib\FilterLib.csproj">
       <Project>{acd81c72-2ae9-4274-88f9-11aa93e25e53}</Project>
       <Name>FilterLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PabDbLib\PabDbLib.csproj">
+      <Project>{bdb2aac6-c21f-4d47-a714-3c2e50ed0f1c}</Project>
+      <Name>PabDbLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -10,8 +10,9 @@ using System.Windows.Forms;
 
 namespace Postausgangsbuch
 {
-    public partial class Overview: MetroFramework.Forms.MetroForm
+    public partial class Overview : MetroFramework.Forms.MetroForm
     {
+        Login l;
         private FilterLib.FilterModel filterModel;
         public Overview() => InitializeComponent();
         public Overview(FilterLib.FilterModel model)
@@ -70,5 +71,11 @@ namespace Postausgangsbuch
         {
             MessageBox.Show("Not supported yet.");
         }
+
+        private void Overview_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
     }
 }
