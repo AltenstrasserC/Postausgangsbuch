@@ -1,0 +1,72 @@
+﻿<Window x:Class="Postausgangsbuch.Statistic"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Postausgangsbuch"
+        xmlns:filterlib="clr-namespace:FilterLib;assembly=FilterLib"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        mc:Ignorable="d"
+        Title="Statistic" Height="373.558" Width="866.827" Loaded="Window_Loaded">
+    <Window.DataContext>
+        <filterlib:FilterModel></filterlib:FilterModel>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.Resources>
+            <Style x:Key="myLabelStyle" TargetType="Label">
+
+            </Style>
+        </Grid.Resources>
+        <DataGrid HorizontalAlignment="Left" Height="273" Margin="10,10,0,0" VerticalAlignment="Top" Width="455" ItemsSource="{Binding Packets}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding DeliveryDate}" ClipboardContentBinding="{x:Null}" Header="Zustellungsdatum"/>
+                <DataGridTextColumn Binding="{Binding PersonSender.Name}" ClipboardContentBinding="{x:Null}" Header="Absender"/>
+                <DataGridTextColumn Binding="{Binding PersonReceiver.Name}" ClipboardContentBinding="{x:Null}" Header="Empfänger"/>
+                <DataGridTextColumn Binding="{Binding Typ}" ClipboardContentBinding="{x:Null}" Header="Typ"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <GroupBox Name ="LabelGroup" HorizontalAlignment="Left" Height="45" Margin="470,10,0,0" VerticalAlignment="Top" Width="168">
+            <StackPanel HorizontalAlignment="Left" Height="27" Margin="0,10,0,0" VerticalAlignment="Top" Width="158" Orientation="Horizontal">
+                <Label Content="Email&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="28" 
+                    MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
+                <Label Content="Brief" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="28" 
+                    MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
+                <Label Content="RsA" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="28" 
+                    MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
+                <Label Content="RsB" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="28" 
+                    MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox x:Name ="LabelGroupMonths" HorizontalAlignment="Left" Height="45" Margin="10,283,0,0" VerticalAlignment="Top" Width="455">
+            <StackPanel HorizontalAlignment="Left" Height="27" Margin="0,10,-2,0" VerticalAlignment="Top" Width="445" Orientation="Horizontal">
+                <Label Content="Jan&#xA;" Name="lbl1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="28" 
+                    MouseLeftButtonDown="LabelMonths_MouseLeftButtonDown"/>
+                <Label Content="Feb" Name="lbl2" HorizontalAlignment="Left" Width="40" 
+                    MouseLeftButtonDown="LabelMonths_MouseLeftButtonDown" Margin="0,0,0,-1"/>
+                <Label Content="Mär" Name="lbl3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="28" 
+                    MouseLeftButtonDown="LabelMonths_MouseLeftButtonDown"/>
+                <Label Content="Apr" Name="lbl4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="32" Height="28" 
+                    MouseLeftButtonDown="LabelMonths_MouseLeftButtonDown" Margin="0,0,0,-1"/>
+                <Label Content="Mai" Name="lbl5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="32" Height="28" 
+                    MouseLeftButtonDown="LabelMonths_MouseLeftButtonDown" Margin="0,0,0,-1"/>
+                <Label Content="Jun" Name="lbl6" HorizontalAlignment="Left" VerticalAlignment="Top" Width="32" Height="28" 
+                    MouseLeftButtonDown="LabelMonths_MouseLeftButtonDown" Margin="0,0,0,-1"/>
+                <Label Content="Jul" Name="lbl7" HorizontalAlignment="Left" VerticalAlignment="Top" Width="32" Height="28" 
+                    MouseLeftButtonDown="LabelMonths_MouseLeftButtonDown" Margin="0,0,0,-1"/>
+                <Label Content="Aug" Name="lbl8" HorizontalAlignment="Left" VerticalAlignment="Top" Width="32" Height="28" 
+                    MouseLeftButtonDown="LabelMonths_MouseLeftButtonDown" Margin="0,0,0,-1"/>
+                <Label Content="Sep" Name="lbl9" HorizontalAlignment="Left" VerticalAlignment="Top" Width="32" Height="28" 
+                    MouseLeftButtonDown="LabelMonths_MouseLeftButtonDown" Margin="0,0,0,-1"/>
+                <Label Content="Okt" Name="lbl10" HorizontalAlignment="Left" VerticalAlignment="Top" Width="32" Height="28" 
+                    MouseLeftButtonDown="LabelMonths_MouseLeftButtonDown" Margin="0,0,0,-1"/>
+                <Label Content="Nov" Name="lbl11" HorizontalAlignment="Left" VerticalAlignment="Top" Width="32" Height="28" 
+                    MouseLeftButtonDown="LabelMonths_MouseLeftButtonDown" Margin="0,0,0,-1"/>
+                <Label Content="Dez" Name="lbl12" HorizontalAlignment="Left" Width="32" 
+                    MouseLeftButtonDown="LabelMonths_MouseLeftButtonDown" Margin="0,0,0,-1"/>
+            </StackPanel>
+        </GroupBox>
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,87 @@
+﻿<Window x:Class="Postausgangsbuch.FilternNach"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Postausgangsbuch"
+        xmlns:model="clr-namespace:FilterLib;assembly=FilterLib"
+        mc:Ignorable="d"
+        Title="Filtern" Height="471" Width="808" Loaded="Window_Loaded"
+        Closed="Window_Closed" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <model:FilterModel/>
+    </Window.DataContext>
+    <Grid>
+        <DataGrid HorizontalAlignment="Left" 
+                  AutoGenerateColumns="False"
+                  Height="390" Margin="292,36,0,0" VerticalAlignment="Top" Width="492" CanUserReorderColumns="False" IsSynchronizedWithCurrentItem="False"
+                  ItemsSource="{Binding Packets}" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="ID"/>
+                <DataGridTextColumn Binding="{Binding Sender.Name}" ClipboardContentBinding="{x:Null}" Header="Sender"/>
+                <DataGridTextColumn Binding="{Binding Sender.Adress.City.PostCode}" ClipboardContentBinding="{x:Null}" Header="Sender ZIP"/>
+                <DataGridTextColumn Binding="{Binding Receiver.Name}" ClipboardContentBinding="{x:Null}" Header="Receiver"/>
+                <DataGridTextColumn Binding="{Binding Receiver.Adress.City.PostCode}" ClipboardContentBinding="{x:Null}" Header="Receiver ZIP"/>
+                <DataGridTextColumn Binding="{Binding Typ}" ClipboardContentBinding="{x:Null}" Header="Typ"/>
+                <DataGridTextColumn Binding="{Binding DeliveryDate, StringFormat=dd.MM.yyyy}" ClipboardContentBinding="{x:Null}" Header="DeliveryDate"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid x:Name="grid" 
+              ShowGridLines="True"
+              HorizontalAlignment="Left" Height="333" Margin="10,10,0,0" VerticalAlignment="Top" Width="277">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Content="MinDate" Margin="5"/>
+            <Label Content="MaxDate" Margin="5" Grid.Row="1"/>
+            <Label Content="Sender" Margin="5" Grid.Row="2"/>
+            <Label Content="Receiver" Margin="5" Grid.Row="3"/>
+            <Label Content="Typ" Margin="5" Grid.Row="4"/>
+            <Label Content="Versendet von PLZ" Margin="5" Grid.Row="5"/>
+            <Label Content="Versendet nach PLZ" Margin="5" Grid.Row="6"/>
+            <DatePicker Name ="datePicker1" Grid.Column="1" Margin="5"
+                        SelectedDate="{Binding MinDate}"  DisplayDateStart="1990-01-01" DisplayDate="1990-01-01" DisplayDateEnd="2999-01-01"/>
+            <DatePicker Name ="datePicker2" Grid.Column="1" Margin="5" Grid.Row="1"
+                        SelectedDate="{Binding MaxDate}"  DisplayDateStart="1990-01-01" DisplayDate="1990-01-01" DisplayDateEnd="2999-01-01"/>
+            <ComboBox Name ="cmb1" Grid.Column="1" Margin="10,5" Grid.Row="2" 
+                      ItemsSource="{Binding Senders}"
+                      SelectedIndex="0"
+                      SelectedItem="{Binding SelectedSender}"
+                       IsSynchronizedWithCurrentItem="True"/>
+            <ComboBox Name ="cmb2" Grid.Column="1" Margin="10,5" Grid.Row="3" 
+                      ItemsSource="{Binding Receivers}" 
+                      SelectedItem="{Binding SelectedReceiver}"
+                      IsSynchronizedWithCurrentItem="True"/>
+            <ComboBox Name ="cmb3" Grid.Column="1" Margin="10,5" Grid.Row="4" 
+                      ItemsSource="{Binding Typs}"
+                      SelectedItem="{Binding Typ}"
+                      IsSynchronizedWithCurrentItem="True"/>
+            <ComboBox Name ="cmb4" Grid.Column="1" Margin="10,5" Grid.Row="5" 
+                      ItemsSource="{Binding SentFromZIP}"
+                      SelectedItem="{Binding SelectedSentFromZIP}"
+                       IsSynchronizedWithCurrentItem="True"/>
+            <ComboBox  Name ="cmb5" Grid.Column="1" Margin="10,5" Grid.Row="6" 
+                      ItemsSource="{Binding SentToZIP}"
+                      SelectedItem="{Binding SelectedSentToZIP}"
+                       IsSynchronizedWithCurrentItem="True"/>
+        </Grid>
+        <Label Content="Anzahl der Listenelemente:" HorizontalAlignment="Left" Margin="292,13,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding PacketCount}" HorizontalAlignment="Left" Margin="447,13,0,0" VerticalAlignment="Top"/>
+        <Button Content="Filter zurücksetzen" HorizontalAlignment="Left" Margin="10,348,0,0" VerticalAlignment="Top" Width="277" 
+                Click="Button_Click" />
+        <TextBox HorizontalAlignment="Left" Height="24" Margin="10,373,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="277" 
+                 Text="{Binding Filtername, Mode=TwoWay}"/>
+        <Button Content="Filter speichern" HorizontalAlignment="Left" Margin="10,402,0,0" VerticalAlignment="Top" Width="277" Height="24" />
+
+    </Grid>
+</Window>
