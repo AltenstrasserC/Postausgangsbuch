@@ -39,7 +39,7 @@ namespace Postausgangsbuch
 
         private void SearchPackets()
         {
-            var searchValue = txt_Search.Text;
+            var searchValue = txt_Search.Text.ToLower();
             
             if (rdbtn_name.IsChecked == true)
             {
