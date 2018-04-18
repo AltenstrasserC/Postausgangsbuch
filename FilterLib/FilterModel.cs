@@ -16,7 +16,7 @@ namespace FilterLib
         private PabDBContext database;
 
         public Clerk Clerk { get; set; } = new Clerk(); //Initialize User
-        public Person NewPerson { get; set; } = new Person(); //Initialize New Person
+        public Person NewPerson { get; set; } = new Person { Adress = new Adress { City=new City()} }; //Initialize New Person
 
         public Filter NewFilter { get; set; } = new Filter(); //Initialize New Filter
 
@@ -223,7 +223,7 @@ namespace FilterLib
         {
             get { return filternname; }
             set { filternname = value;
-                NewFilter.Name = Filepath;
+                NewFilter.Name = Filtername;
             }
         }
 
@@ -455,6 +455,7 @@ namespace FilterLib
         private void DoCreatePacket(string obj)
         {
             database.Database.Log = Console.WriteLine;
+            MessageBox.Show($"Packet added!");
             database.Packets.Add(NewPacket);
             NewPacket = new Packet { Clerk = Clerk};
             database.SaveChanges();
@@ -478,10 +479,17 @@ namespace FilterLib
         private void DoCreateNewPerson(string obj)
         {
             database.Database.Log = Console.WriteLine;
+            MessageBox.Show($"Person {NewPerson.Name} added!");
             database.Persons.Add(NewPerson);
-            NewPerson = null;
+            NewPerson = new Person { Adress = new Adress { City = new City() } };
             database.SaveChanges();
+            
+            Senders = InitSenderList();
+            Receivers = InitReceiverList();
+            People = database.Persons.ToList();
             RaisePropertyChangedEvent(nameof(People));
+            RaisePropertyChangedEvent(nameof(Senders));
+            RaisePropertyChangedEvent(nameof(Receivers));
         }
         public ICommand CreateFilter => new RelayCommand<string>(
             DoCreateFilter,
@@ -491,10 +499,13 @@ namespace FilterLib
         private void DoCreateFilter(string obj)
         {
             database.Database.Log = Console.WriteLine;
+            NewFilter.Clerk = Clerk;
+            MessageBox.Show($"Filter {NewFilter.Name} added!");
             database.Filters.Add(NewFilter);
             NewFilter = new Filter();
             database.SaveChanges();
             RaisePropertyChangedEvent(nameof(Filters));
+            
         }
         #endregion
     }
