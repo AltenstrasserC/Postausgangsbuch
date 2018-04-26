@@ -13,7 +13,7 @@ namespace FilterLib
 {
     public class FilterModel : ObservableObject
     {
-        private PabDBContext database;//Mango
+        private PabDBContext database;//Mongo
 
         public Clerk Clerk { get; set; } = new Clerk(); //Initialize User
         public Person NewPerson { get; set; } = new Person { Adress = new Adress { City = new City() } }; //Initialize New Person
