@@ -9,6 +9,12 @@ namespace PabDbLib.Migrations
         {
             using (var db = new PabDBContext())
             {
+                DropTable("Clerks");
+                DropTable("Packets");
+                DropTable("Cities");
+                DropTable("Persons");
+                DropTable("Adresses");
+
                 var clerk1 = new Clerk { Name = "jreidinger", Password = "1234" };
                 var clerk2 = new Clerk { Name = "caltenstraﬂer", Password = "1234" };
                 var clerk3 = new Clerk { Name = "jr", Password = "" };

@@ -16,14 +16,14 @@ namespace FilterLib
         private PabDBContext database;
 
         public Clerk Clerk { get; set; } = new Clerk(); //Initialize User
-        public Person NewPerson { get; set; } = new Person { Adress = new Adress { City=new City()} }; //Initialize New Person
+        public Person NewPerson { get; set; } = new Person { Adress = new Adress { City = new City() } }; //Initialize New Person
 
         public Filter NewFilter { get; set; } = new Filter(); //Initialize New Filter
 
         public Packet NewPacket { get; set; } = new Packet(); //Initialize New Filter
 
         public List<PabDbLib.Filter> Filters { get; set; }
-        
+
         public List<Person> Senders { get; set; }
         public List<Person> People { get; set; }
         public List<Person> Receivers { get; set; }
@@ -87,16 +87,17 @@ namespace FilterLib
         }
 
         private string ka = "Keine Auswahl";
-        private Person kaP = new Person { Name = "Keine Auswahl"};
+        private Person kaP = new Person { Name = "Keine Auswahl" };
 
-        
-        
+
+
         private string senderSearchTerm;
 
         public string SenderSearchTerm
         {
             get { return senderSearchTerm; }
-            set {
+            set
+            {
                 senderSearchTerm = value;
                 if (SenderSearchTerm == "")
                 {
@@ -114,7 +115,8 @@ namespace FilterLib
         public string ReceiverSearchTerm
         {
             get { return receiverSearchTerm; }
-            set {
+            set
+            {
                 receiverSearchTerm = value;
                 if (ReceiverSearchTerm == "")
                 {
@@ -222,7 +224,9 @@ namespace FilterLib
         public string Filtername
         {
             get { return filternname; }
-            set { filternname = value;
+            set
+            {
+                filternname = value;
                 NewFilter.Name = Filtername;
             }
         }
@@ -328,7 +332,8 @@ namespace FilterLib
         public string SelectedSentFromZIP
         {
             get { return selectedSentFromZIP; }
-            set {
+            set
+            {
                 if (selectedSentFromZIP == null)
                 {
                     selectedSentFromZIP = value;
@@ -457,7 +462,7 @@ namespace FilterLib
             database.Database.Log = Console.WriteLine;
             MessageBox.Show($"Packet added!");
             database.Packets.Add(NewPacket);
-            NewPacket = new Packet { Clerk = Clerk};
+            NewPacket = new Packet { Clerk = Clerk };
             database.SaveChanges();
             RaisePropertyChangedEvent(nameof(Packets));
         }
@@ -468,7 +473,7 @@ namespace FilterLib
 
         private void DoResetFilter(string obj)
         {
-            NewFilter = new Filter ();
+            NewFilter = new Filter();
         }
 
         public ICommand CreateNewPerson => new RelayCommand<string>(
@@ -478,12 +483,20 @@ namespace FilterLib
 
         private void DoCreateNewPerson(string obj)
         {
+            var personAdresss = NewPerson.Adress;
+            if (database.Cities.Count(x => x.PostCode.Equals(personAdresss.City.PostCode)) != 0)
+            {
+                var id = database.Cities.First(x => x.PostCode.Equals(personAdresss.City.PostCode));
+                personAdresss.City = id;
+
+            }
+            NewPerson.Adress.City.Country = "Austria";
             database.Database.Log = Console.WriteLine;
             MessageBox.Show($"Person {NewPerson.Name} added!");
             database.Persons.Add(NewPerson);
             NewPerson = new Person { Adress = new Adress { City = new City() } };
             database.SaveChanges();
-            
+
             Senders = InitSenderList();
             Receivers = InitReceiverList();
             People = database.Persons.ToList();
@@ -505,7 +518,7 @@ namespace FilterLib
             NewFilter = new Filter();
             database.SaveChanges();
             RaisePropertyChangedEvent(nameof(Filters));
-            
+
         }
         #endregion
     }

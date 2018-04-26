@@ -72,6 +72,6 @@
             </TabItem>
 
         </TabControl>
-        <Button x:Name="btn_finish" Content="Neu erstellen" HorizontalAlignment="Left" Margin="715,404,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btn_finish" Content="Neu erstellen" HorizontalAlignment="Left" Margin="715,404,0,0" VerticalAlignment="Top" Width="75" Command="{Binding CreateNewPerson, Mode=OneWay}" Click="btn_finish_Click"/>
     </Grid>
 </Window>

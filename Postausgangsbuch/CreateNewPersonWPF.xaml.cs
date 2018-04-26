@@ -33,6 +33,10 @@ namespace Postausgangsbuch
             this.filterModel = filterModel;
             this.DataContext = filterModel;
         }
-        
+
+        private void btn_finish_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
