@@ -37,7 +37,7 @@ namespace Postausgangsbuch
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             tabControl.SelectedIndex = 0;
-            dpkDelivery.SelectedDate = DateTime.Parse("01.01.1990");
+            dpkDelivery.SelectedDate = (DateTime.Now).Date;
         }
         
         private void btnAddNewReceiver_Click(object sender, RoutedEventArgs e)
@@ -63,6 +63,8 @@ namespace Postausgangsbuch
             var searchValue = txtNameSender.Text;
             var list = db.Persons.Where(x => x.Name.StartsWith(searchValue)).Select(x => x);
             grdSender.Items.Clear();
+            txtNameSender.Text = "";
+            searchValue = null;
             //if (list != null) AddToList(list, txtNameSender);
         }
 
@@ -71,17 +73,9 @@ namespace Postausgangsbuch
             var searchValue = txtNameReceiver.Text;
             var list = db.Persons.Where(x => x.Name.StartsWith(searchValue)).Select(x => x);
             grdReceiver.Items.Clear();
+            txtNameReceiver.Text = "";
+            searchValue = null;
             //if (list != null) AddToList(list, txtNameReceiver);
-        }
-
-        private void btnChooseSender_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnChooseReceiver_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void btnChoosePath_Click(object sender, RoutedEventArgs e)
