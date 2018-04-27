@@ -43,7 +43,7 @@ namespace Postausgangsbuch
                                      .Password;
                 if (login.Equals(pwBxPassword.Password))
                 {
-                    filterModel.Clerk = new Clerk {Name = username, Password = pwBxPassword.Password};
+                    filterModel.Clerk = db.Clerks.Single(x => x.Name == username);
                     Overview overview = new Overview(filterModel);
                     overview.Show();
                     this.Hide();
