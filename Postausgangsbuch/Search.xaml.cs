@@ -40,7 +40,7 @@ namespace Postausgangsbuch
         private void SearchPackets()
         {
             var searchValue = txt_Search.Text.ToLower();
-            
+
             if (rdbtn_name.IsChecked == true)
             {
                 var list = packetList.Where(x => x.Receiver.Name.ToLower().StartsWith(searchValue) || x.Sender.Name.ToLower().StartsWith(searchValue))
@@ -57,14 +57,22 @@ namespace Postausgangsbuch
             }
             else if (rdbtn_ZIP.IsChecked == true)
             {
-                if (packetList.Where(x => x.Receiver.Adress.City.PostCode.StartsWith(searchValue)).Count() != 0)
+                if (packetList.Count(x => x.Receiver.Adress.City.PostCode.StartsWith(searchValue)) != 0 ||
+                    packetList.Count(x => x.Sender.Adress.City.PostCode.StartsWith(searchValue)) != 0)
                 {
-                    if (packetList.Where(x => x.Sender.Adress.City.PostCode.StartsWith(searchValue)).Count() != 0)
-                    {
-                        var list = packetList.Where(x => x.Receiver.Adress.City.PostCode.StartsWith(searchValue) || x.Sender.Adress.City.PostCode.StartsWith(searchValue))
-                                     .Select(x => x).ToList().AsObservableCollection();
-                        if (list != null) filterModel.Packets = list;
-                    }
+                    var list = packetList.Where(
+                                                x => x.Receiver.Adress.City.PostCode.StartsWith(searchValue) ||
+                                                x.Sender.Adress.City.PostCode.StartsWith(searchValue)
+                                                )
+                                         .ToList()
+                                         .AsObservableCollection();
+
+                    if (list != null) filterModel.Packets = list;
+                }
+
+                else
+                {
+                    filterModel.Packets = new ObservableCollection<Packet>();
                 }
             }
             else if (rdbtn_Clerk.IsChecked == true)
@@ -106,14 +114,14 @@ namespace Postausgangsbuch
         private void SearchDate()
         {
             var searchDate = dpck_DateFirst.SelectedDate;
-            var list = packetList.Where(x => x.DeliveryDate.Equals(searchDate)).Select(x =>x).ToList().AsObservableCollection();
+            var list = packetList.Where(x => x.DeliveryDate.Equals(searchDate)).Select(x => x).ToList().AsObservableCollection();
             filterModel.Packets = list;
         }
 
         private void DatePicked_Click(object sender, RoutedEventArgs e)
         {
             SearchDate();
-            
+
         }
 
         private void Window_Closed(object sender, EventArgs e)

@@ -53,7 +53,7 @@
                         SelectedDate="{Binding MinDate}"  DisplayDateStart="1990-01-01" DisplayDate="1990-01-01" DisplayDateEnd="2999-01-01"/>
             <DatePicker Name ="datePicker2" Grid.Column="1" Margin="5" Grid.Row="1"
                         SelectedDate="{Binding MaxDate}"  DisplayDateStart="1990-01-01" DisplayDate="1990-01-01" DisplayDateEnd="2999-01-01"/>
-            <ComboBox Name ="cmb1" Grid.Column="1" Margin="10,5" Grid.Row="2" 
+            <ComboBox x:Name ="cmb1" Grid.Column="1" Margin="10,5" Grid.Row="2" 
                       ItemsSource="{Binding Senders}"
                       SelectedIndex="0"
                       SelectedItem="{Binding SelectedSender}"

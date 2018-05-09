@@ -13,7 +13,8 @@ namespace FilterLib
 {
     public class FilterModel : ObservableObject
     {
-        private PabDBContext database;//Mongosaft
+        #region Variables
+        private PabDBContext database;
 
         public Clerk Clerk { get; set; } = new Clerk(); //Initialize User
         public Person NewPerson { get; set; } = new Person { Adress = new Adress { City = new City() } }; //Initialize New Person
@@ -22,7 +23,7 @@ namespace FilterLib
 
         public Packet NewPacket { get; set; } = new Packet(); //Initialize New Filter
 
-        public List<PabDbLib.Filter> Filters { get; set; }
+        public List<Filter> Filters { get; set; }
 
         public List<Person> Senders { get; set; }
         public List<Person> People { get; set; }
@@ -31,6 +32,7 @@ namespace FilterLib
         public List<string> SentToZIP { get; set; }
         public List<string> Typs { get; set; }
         public int PacketCount { get; set; }
+        #endregion
 
         public int emailCount { get; set; } = 0;
         public int briefCount { get; set; } = 0;
@@ -43,13 +45,17 @@ namespace FilterLib
             database = db;
             RefillPacketList();
             Typs = InitTypList();
-            Senders = InitSenderList();
+            Senders = InitSenderList();            
+
             Receivers = InitReceiverList();
             People = db.Persons.ToList();
             SentFromZIP = InitSenderZIPList();
             SentToZIP = InitReceiverZIPList();
-            Filters = new List<PabDbLib.Filter>();
+            Filters = InitFilterList();
         }
+
+        
+
         private string filepath;
 
         public string Filepath
@@ -460,6 +466,17 @@ namespace FilterLib
             typlist.Add("RsA");
             typlist.Add("RsB");
             return typlist;
+        }
+
+        private List<Filter> InitFilterList()
+        {
+            var filterList = new List<Filter>();
+            var dbFilters = database.Filters.ToList();
+            foreach (var item in dbFilters)
+            {
+                filterList.Add(item);
+            }
+            return filterList;
         }
         #endregion
         #region Commands
