@@ -1,0 +1,45 @@
+﻿<Window x:Class="Postausgangsbuch.Statistics"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Postausgangsbuch"
+        xmlns:model="clr-namespace:FilterLib;assembly=FilterLib"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        mc:Ignorable="d"
+        Title="Statistics" Height="471" Width="808">
+    <Window.DataContext>
+        <model:FilterModel/>
+    </Window.DataContext>
+    <Grid>
+        <DataGrid HorizontalAlignment="Left" 
+                  AutoGenerateColumns="False"
+                  Height="384" Margin="10,10,0,0" VerticalAlignment="Top" Width="447" CanUserReorderColumns="False" IsSynchronizedWithCurrentItem="False"
+                  ItemsSource="{Binding Packets}" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="ID"/>
+                <DataGridTextColumn Binding="{Binding Sender.Name}" ClipboardContentBinding="{x:Null}" Header="Sender"/>
+                <DataGridTextColumn Binding="{Binding Sender.Adress.City.PostCode}" ClipboardContentBinding="{x:Null}" Header="Sender ZIP"/>
+                <DataGridTextColumn Binding="{Binding Receiver.Name}" ClipboardContentBinding="{x:Null}" Header="Receiver"/>
+                <DataGridTextColumn Binding="{Binding Receiver.Adress.City.PostCode}" ClipboardContentBinding="{x:Null}" Header="Receiver ZIP"/>
+                <DataGridTextColumn Binding="{Binding Typ}" ClipboardContentBinding="{x:Null}" Header="Typ"/>
+                <DataGridTextColumn Binding="{Binding DeliveryDate, StringFormat=dd.MM.yyyy}" ClipboardContentBinding="{x:Null}" Header="DeliveryDate"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid>
+            <lvc:PieChart x:Name="myPieChart" LegendLocation="Bottom" HoverPushOut="8" DataHover="Chart_OnDataClick"  Hoverable="True" DataTooltip="{x:Null}" Margin="468,52,10,50">
+                <!--<lvc:PieChart.Series>
+                    <lvc:PieSeries Title="Brief" Values="{Binding briefCount}" DataLabels="True"
+                               LabelPoint="{Binding PointLabel}"/>
+                    <lvc:PieSeries Title="Email" Values="{Binding emailCount}" DataLabels="True" 
+                               LabelPoint="{Binding PointLabel}"/>
+                    <lvc:PieSeries Title="RsA" Values="{Binding rsaCount}" DataLabels="True" 
+                               LabelPoint="{Binding PointLabel}"/>
+                    <lvc:PieSeries Title="RsB" Values="{Binding rsbCount}" DataLabels="True" 
+                               LabelPoint="{Binding PointLabel}"/>
+                </lvc:PieChart.Series>-->
+            </lvc:PieChart>
+        </Grid>
+
+    </Grid>
+</Window>

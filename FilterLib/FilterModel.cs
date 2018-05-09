@@ -32,6 +32,11 @@ namespace FilterLib
         public List<string> Typs { get; set; }
         public int PacketCount { get; set; }
 
+        public int emailCount { get; set; } = 0;
+        public int briefCount { get; set; } = 0;
+        public int rsaCount { get; set; } = 0;
+        public int rsbCount { get; set; } = 0;
+
         public FilterModel() => database = new PabDBContext();
         public FilterModel(PabDBContext db)
         {
@@ -83,6 +88,10 @@ namespace FilterLib
                 PacketCount = Packets.Count();
                 RaisePropertyChangedEvent(nameof(PacketCount));
                 RaisePropertyChangedEvent(nameof(Packets));
+                emailCount = Packets.Count(x => x.Typ.Equals("Email"));
+                briefCount = Packets.Count(x => x.Typ.Equals("Brief"));
+                rsaCount = Packets.Count(x => x.Typ.Equals("RsA"));
+                rsbCount = Packets.Count(x => x.Typ.Equals("RsB"));
             }
         }
 
@@ -351,6 +360,8 @@ namespace FilterLib
         }
 
         private string selectedSentToZIP;
+        
+
         public string SelectedSentToZIP
         {
             get { return selectedSentToZIP; }

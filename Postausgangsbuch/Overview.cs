@@ -69,7 +69,8 @@ namespace Postausgangsbuch
 
         private void metroTile4_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not supported yet.");
+            Statistics stats = new Statistics(filterModel);
+            stats.Show();
         }
 
         private void Overview_FormClosed(object sender, FormClosedEventArgs e)
