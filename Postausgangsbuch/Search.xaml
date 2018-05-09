@@ -20,7 +20,7 @@
         <StackPanel>
             <GroupBox Header="Suchen nach" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" FontSize="16">
                 <StackPanel>
-                    <RadioButton Content="Name" x:Name="rdbtn_name" FontSize="16"/>
+                    <RadioButton Content="Name" x:Name="rdbtn_name" FontSize="16" IsChecked="True"/>
                     <RadioButton Content="Datum" x:Name="rdbtn_date" Checked="Rdbtn_date_Checked" Unchecked="Rdbtn_date_Unchecked" FontSize="16"/>
                     <RadioButton Content="Unternehmen" x:Name="rdbtn_company" FontSize="16"/>
                     <RadioButton Content="PLZ" x:Name="rdbtn_ZIP" FontSize="16"/>
