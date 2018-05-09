@@ -35,8 +35,7 @@ namespace Postausgangsbuch
             InitializeComponent();
             this.filterModel = filterModel;
             this.DataContext = filterModel;
-            datePicker1.SelectedDate = DateTime.Parse("01.01.1990");
-            datePicker2.SelectedDate = DateTime.Now;
+            
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

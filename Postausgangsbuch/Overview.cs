@@ -20,7 +20,34 @@ namespace Postausgangsbuch
             InitializeComponent();
             filterModel = model;
             metroLabel1.Text = filterModel.Clerk.Name;
+            var filters = filterModel.Filters.Select(x => x.Name);
+            SetSavedFilter(filters);
+
         }
+
+        private void SetSavedFilter(IEnumerable<string> filters)
+        {
+            if (filters.Count() > 0)
+            {
+                metroTile6.Text = filters.First();
+
+                if (filters.Count() == 2)
+                {
+                    metroTile7.Text = filters.Skip(1).First();
+                }
+                else
+                {
+                    metroTile7.Text = "Kein gespeicherter Filter";
+                }
+            }
+            else
+            {
+                metroTile7.Text = "Kein gespeicherter Filter";
+                metroTile6.Text = "Kein gespeicherter Filter";
+            }           
+                
+        }
+
         private void Overview_Load(object sender, EventArgs e)
         {
             this.Text = "Postausgangsbuch";
@@ -59,12 +86,31 @@ namespace Postausgangsbuch
 
         private void metroTile7_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not supported yet.");
+            var filter = filterModel.Filters.Skip(1).First();
+            SetFilter(filter);
+
+            FilternNach f = new FilternNach(filterModel);
+            f.Show();
         }
 
         private void metroTile6_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not supported yet.");
+            var filter = filterModel.Filters.First();
+            SetFilter(filter);
+
+            FilternNach f = new FilternNach(filterModel);
+            f.Show();
+        }
+
+        private void SetFilter(PabDbLib.Filter filter)
+        {
+            filterModel.MinDate = filter.MinDate;
+            filterModel.MaxDate = filter.MaxDate;
+            filterModel.SelectedSender = filter.Sender;
+            filterModel.SelectedReceiver = filter.Receiver;
+            filterModel.Typ = filter.Typ;
+            filterModel.SelectedSentFromZIP = filter.SenderZIP;
+            filterModel.SelectedSentToZIP = filter.ReceiverZIP;
         }
 
         private void metroTile4_Click(object sender, EventArgs e)
