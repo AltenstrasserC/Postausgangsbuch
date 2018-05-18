@@ -7,7 +7,7 @@
         xmlns:model="clr-namespace:FilterLib;assembly=FilterLib"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="Statistics" Height="471" Width="808">
+        Title="Statistics" Height="465" Width="808">
     <Window.DataContext>
         <model:FilterModel/>
     </Window.DataContext>
@@ -39,6 +39,7 @@
                                LabelPoint="{Binding PointLabel}"/>
                 </lvc:PieChart.Series>-->
             </lvc:PieChart>
+            <Button x:Name="btn_statsFilter" Content="Filter anwenden" HorizontalAlignment="Left" Margin="10,403,0,0" VerticalAlignment="Top" Width="103" Click="btn_statsFilter_Click"/>
         </Grid>
 
     </Grid>

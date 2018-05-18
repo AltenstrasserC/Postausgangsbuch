@@ -14,7 +14,7 @@
     <Grid>
         <DataGrid HorizontalAlignment="Left" 
                   AutoGenerateColumns="False"
-                  Height="390" Margin="292,36,0,0" VerticalAlignment="Top" Width="492" CanUserReorderColumns="False" IsSynchronizedWithCurrentItem="False"
+                  Height="361" Margin="292,36,0,0" VerticalAlignment="Top" Width="492" CanUserReorderColumns="False" IsSynchronizedWithCurrentItem="False"
                   ItemsSource="{Binding Packets}" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="ID"/>
@@ -81,7 +81,8 @@
                 Click="Button_Click" />
         <TextBox HorizontalAlignment="Left" Height="24" Margin="10,373,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="277" 
                  Text="{Binding Filtername, Mode=TwoWay}"/>
-        <Button Content="Filter speichern" HorizontalAlignment="Left" Margin="10,402,0,0" VerticalAlignment="Top" Width="277" Height="24" Command="{Binding CreateFilter, Mode=OneWay}" />
+        <Button Content="Filter speichern" HorizontalAlignment="Left" Margin="10,402,0,0" VerticalAlignment="Top" Width="277" Height="24" Command="{Binding CreateFilter, Mode=OneWay}" Click="Button_Click_2" />
+        <Button Content="Statistik anzeigen" HorizontalAlignment="Left" Margin="292,402,0,0" VerticalAlignment="Top" Width="492" Height="24" Click="Button_Click_1"/>
 
     </Grid>
 </Window>
