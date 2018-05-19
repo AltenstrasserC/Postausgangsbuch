@@ -95,10 +95,10 @@ namespace Postausgangsbuch
 
         private void metroTile6_Click(object sender, EventArgs e)
         {
-            var filter = filterModel.Filters.First();
+            var filter = filterModel.Filters.First(); //TODO: Filter gespeichert-->Update Overview 
             SetFilter(filter);
 
-            FilternNach f = new FilternNach(filterModel);
+            FilternNach f = new FilternNach(filterModel);//TODO: Anzahl der Elemente in Liste falsch
             f.Show();
         }
 

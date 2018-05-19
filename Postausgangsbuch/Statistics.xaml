@@ -27,7 +27,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <Grid>
-            <lvc:PieChart x:Name="myPieChart" LegendLocation="Bottom" HoverPushOut="8" DataHover="Chart_OnDataClick"  Hoverable="True" DataTooltip="{x:Null}" Margin="468,52,10,50">
+            <lvc:PieChart x:Name="myPieChart" LegendLocation="Bottom" HoverPushOut="8" DataHover="Chart_OnDataClick"  Hoverable="True" DataTooltip="{x:Null}" Margin="469,10,10,46">
                 <!--<lvc:PieChart.Series>
                     <lvc:PieSeries Title="Brief" Values="{Binding briefCount}" DataLabels="True"
                                LabelPoint="{Binding PointLabel}"/>

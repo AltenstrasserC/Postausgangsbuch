@@ -20,7 +20,7 @@ namespace Postausgangsbuch
     /// <summary>
     /// Interaction logic for Statistics.xaml
     /// </summary>
-    public partial class Statistics : Window
+    public partial class Statistics : Window //TODO: Datum
     {
         private FilterLib.FilterModel filterModel;
         public Statistics()
