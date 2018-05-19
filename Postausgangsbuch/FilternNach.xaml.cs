@@ -64,5 +64,16 @@ namespace Postausgangsbuch
         {
             filterModel.RefillPacketList();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Statistics newStatisticWindow = new Statistics(filterModel);
+            newStatisticWindow.Show();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

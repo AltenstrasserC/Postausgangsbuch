@@ -56,5 +56,12 @@ namespace Postausgangsbuch
             var selectedSeries = (PieSeries)chartpoint.SeriesView;
             selectedSeries.DataLabels = true;
         }
+
+        private void btn_statsFilter_Click(object sender, RoutedEventArgs e)
+        {
+            ChooseFilter cf = new ChooseFilter(filterModel);
+            cf.Show();
+            this.Close();
+        }
     }
 }

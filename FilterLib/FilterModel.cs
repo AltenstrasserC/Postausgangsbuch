@@ -39,6 +39,8 @@ namespace FilterLib
         public int rsaCount { get; set; } = 0;
         public int rsbCount { get; set; } = 0;
 
+        public Filter selectedFilter { get; set; }
+
         public FilterModel() => database = new PabDBContext();
         public FilterModel(PabDBContext db)
         {
