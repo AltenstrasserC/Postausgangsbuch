@@ -1,4 +1,5 @@
 ﻿using FilterLib;
+using MahApps.Metro.Controls;
 using Microsoft.Win32;
 using PabDbLib;
 using System;
@@ -21,13 +22,13 @@ namespace Postausgangsbuch
     /// <summary>
     /// Interaction logic for CreateNewWpf.xaml
     /// </summary>
-    public partial class CreateNewWpf : Window
+    public partial class CreateNewWpf : MetroWindow
     {
         private readonly PabDBContext db = new PabDBContext();
-        private FilterLib.FilterModel filterModel;
+        private FilterLib.NewPacketModel filterModel;
         public CreateNewWpf() => InitializeComponent();
 
-        public CreateNewWpf(FilterModel filterModel)
+        public CreateNewWpf(NewPacketModel filterModel)
         {
             InitializeComponent();
             this.filterModel = filterModel;
@@ -40,15 +41,11 @@ namespace Postausgangsbuch
             dpkDelivery.SelectedDate = (DateTime.Now).Date;
         }
         
-        private void btnAddNewReceiver_Click(object sender, RoutedEventArgs e)
+        private void btnAddNewPerson_Click(object sender, RoutedEventArgs e)
         {
-            CreateNewPersonWPF c = new CreateNewPersonWPF(filterModel);
+            CreateNewPersonWPF c = new CreateNewPersonWPF(new PersonModel(filterModel.db));
             c.ShowDialog();
-        }
-        private void btnAddNewSender_Click(object sender, RoutedEventArgs e)
-        {
-            CreateNewPersonWPF c = new CreateNewPersonWPF(filterModel);
-            c.ShowDialog();
+            filterModel.LoadNewPacketModel();
         }
         private void TxtBx_Sender_TextChanged(object sender, EventArgs e)
         {
@@ -89,6 +86,11 @@ namespace Postausgangsbuch
         
 
         private void btnCreateNew_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnclose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

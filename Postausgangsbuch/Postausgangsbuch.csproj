@@ -49,6 +49,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -61,14 +64,18 @@
     <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    <Reference Include="MahApps.Metro, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.6.4\lib\net46\MahApps.Metro.dll</HintPath>
     </Reference>
-    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    <Reference Include="MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.RunTime.1.2.0.3\lib\net40-Client\MetroFramework.dll</HintPath>
     </Reference>
-    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    <Reference Include="MetroFramework.Design, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.Design.1.2.0.3\lib\net40\MetroFramework.Design.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.Fonts.1.2.0.3\lib\net40\MetroFramework.Fonts.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -77,6 +84,9 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -95,23 +105,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ChooseFilter.xaml.cs">
-      <DependentUpon>ChooseFilter.xaml</DependentUpon>
-    </Compile>
     <Compile Include="CreateNewPersonWPF.xaml.cs">
       <DependentUpon>CreateNewPersonWPF.xaml</DependentUpon>
     </Compile>
     <Compile Include="CreateNewWpf.xaml.cs">
       <DependentUpon>CreateNewWpf.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HasAllTextConverter.cs" />
+    <Compile Include="MyTile.xaml.cs">
+      <DependentUpon>MyTile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Overview2.xaml.cs">
+      <DependentUpon>Overview2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Overview.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Overview.Designer.cs">
-      <DependentUpon>Overview.cs</DependentUpon>
     </Compile>
     <Compile Include="PieChart.xaml.cs">
       <DependentUpon>PieChart.xaml</DependentUpon>
@@ -125,10 +133,6 @@
     <Compile Include="Statistics.xaml.cs">
       <DependentUpon>Statistics.xaml</DependentUpon>
     </Compile>
-    <Page Include="ChooseFilter.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="CreateNewPersonWPF.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -136,6 +140,14 @@
     <Page Include="CreateNewWpf.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MyTile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Overview2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Login.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -184,9 +196,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Overview.resx">
-      <DependentUpon>Overview.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -235,6 +244,51 @@
       <Project>{bdb2aac6-c21f-4d47-a714-3c2e50ed0f1c}</Project>
       <Name>PabDbLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MetroFramework.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Logo_1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="PabLogo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\if_Pie_Chart_385759.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\if_File_385756.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\agenda %281%29.png" />
+    <Resource Include="Icons\agenda.png" />
+    <Resource Include="Icons\avatar.png" />
+    <Resource Include="Icons\email %281%29.png" />
+    <Resource Include="Icons\email %282%29.png" />
+    <Resource Include="Icons\email %283%29.png" />
+    <Resource Include="Icons\email %284%29.png" />
+    <Resource Include="Icons\email %285%29.png" />
+    <Resource Include="Icons\email %286%29.png" />
+    <Resource Include="Icons\email %287%29.png" />
+    <Resource Include="Icons\email.png" />
+    <Resource Include="Icons\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\chart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\presentation %281%29.png" />
+    <Resource Include="Icons\presentation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\man.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using FilterLib;
+using MahApps.Metro.Controls;
 using PabDbLib;
 
 namespace Postausgangsbuch
@@ -20,16 +21,16 @@ namespace Postausgangsbuch
     /// <summary>
     /// Interaction logic for Search.xaml
     /// </summary>
-    public partial class Search : Window
+    public partial class Search : MetroWindow
     {
-        private FilterModel filterModel;
+        private SearchModel filterModel;
         private ObservableCollection<Packet> packetList;
         public Search()
         {
             InitializeComponent();
         }
 
-        public Search(FilterModel filterModel)
+        public Search(SearchModel filterModel)
         {
             InitializeComponent();
             this.filterModel = filterModel;
@@ -126,7 +127,7 @@ namespace Postausgangsbuch
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            filterModel.RefillPacketList();
+            filterModel.LoadSearchModel();
         }
     }
 }

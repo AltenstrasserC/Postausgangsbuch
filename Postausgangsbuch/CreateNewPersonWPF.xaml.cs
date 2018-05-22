@@ -1,4 +1,5 @@
 ﻿using FilterLib;
+using MahApps.Metro.Controls;
 using PabDbLib;
 using System;
 using System.Collections.Generic;
@@ -19,19 +20,19 @@ namespace Postausgangsbuch
     /// <summary>
     /// Interaction logic for CreateNewPersonWPF.xaml
     /// </summary>
-    public partial class CreateNewPersonWPF : Window
+    public partial class CreateNewPersonWPF : MetroWindow
     {
-        private FilterLib.FilterModel filterModel;
+        private FilterLib.PersonModel personModel;
         public CreateNewPersonWPF()
         {
             InitializeComponent();
         }
 
-        public CreateNewPersonWPF(FilterModel filterModel)
+        public CreateNewPersonWPF(PersonModel personModel)
         {
             InitializeComponent();
-            this.filterModel = filterModel;
-            this.DataContext = filterModel;
+            this.personModel = personModel;
+            this.DataContext = personModel;
         }
 
         private void btn_finish_Click(object sender, RoutedEventArgs e)

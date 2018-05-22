@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="Postausgangsbuch.MyTile"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Postausgangsbuch"
+             mc:Ignorable="d" 
+             Name="Tile" d:DesignHeight="160" d:DesignWidth="230">
+    <Grid Name="Tile_Background" Background="#FFFBC200" MouseEnter="Tile_Background_MouseEnter" MouseLeave="Tile_Background_MouseLeave" >
+        
+        <Image Name="Tile_Image"  HorizontalAlignment="Left" Height="64" Margin="10,59,0,0" VerticalAlignment="Top" Width="64" />
+        <Label Name="Tile_Title" Content="Title" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="18" FontWeight="SemiBold" Foreground="White"/>
+        
+    </Grid>
+</UserControl>

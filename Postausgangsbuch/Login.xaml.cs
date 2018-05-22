@@ -1,4 +1,5 @@
-﻿using PabDbLib;
+﻿using MahApps.Metro.Controls;
+using PabDbLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,10 +19,10 @@ namespace Postausgangsbuch
     /// <summary>
     /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class Login : MetroWindow
     {
         private readonly PabDbLib.PabDBContext db = new PabDbLib.PabDBContext();
-        public FilterLib.FilterModel filterModel;
+        public FilterLib.OverviewModel filterModel;
         private List<Clerk> LoginData;
 
         public Login()=>Init();
@@ -29,7 +30,7 @@ namespace Postausgangsbuch
         {
             InitializeComponent();
             LoginData = db.Clerks.Select(x => x).ToList();
-            filterModel = new FilterLib.FilterModel(db);
+            filterModel = new FilterLib.OverviewModel(db);
             this.DataContext = filterModel;
         }
 
@@ -44,9 +45,15 @@ namespace Postausgangsbuch
                 if (login.Equals(pwBxPassword.Password))
                 {
                     filterModel.Clerk = db.Clerks.Single(x => x.Name == username);
-                    Overview overview = new Overview(filterModel);
+                    Overview2 overview = new Overview2(filterModel);
                     overview.Show();
                     this.Hide();
+                }
+                else
+                {
+                    lblError.Content = "Benutzername/Passwort falsch";
+                    lblError.Foreground = Brushes.Red;
+                    lblError.Visibility = Visibility.Visible;
                 }
             }
             else

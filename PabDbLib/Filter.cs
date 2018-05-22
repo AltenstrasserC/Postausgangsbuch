@@ -15,7 +15,10 @@ namespace PabDbLib
         public string Name { get; set; }
         public virtual Person Sender { get; set; }
         public virtual Person Receiver { get; set; }
-        public string Typ { get; set; }
+        public bool Brief { get; set; }
+        public bool Email { get; set; }
+        public bool RsA { get; set; }
+        public bool RsB { get; set; }
         public DateTime MinDate { get; set; }
         public DateTime MaxDate { get; set; }
         public string SenderZIP { get; set; }

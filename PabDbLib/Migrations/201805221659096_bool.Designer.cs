@@ -7,13 +7,13 @@ namespace PabDbLib.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class DBSeed : IMigrationMetadata
+    public sealed partial class _bool : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DBSeed));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_bool));
         
         string IMigrationMetadata.Id
         {
-            get { return "201804041303369_DBSeed"; }
+            get { return "201805221659096_bool"; }
         }
         
         string IMigrationMetadata.Source

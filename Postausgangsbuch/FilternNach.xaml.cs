@@ -1,4 +1,5 @@
 ﻿using FilterLib;
+using MahApps.Metro.Controls;
 using PabDbLib;
 using Postausgangsbuch;
 using System;
@@ -21,16 +22,16 @@ namespace Postausgangsbuch
     /// <summary>
     /// Interaction logic for FilternNach.xaml
     /// </summary>
-    public partial class FilternNach : Window
+    public partial class FilternNach : MetroWindow
     {
-        private FilterLib.FilterModel filterModel;
+        public FilterLib.FilterAttributesModel filterModel;
 
         public FilternNach()
         {
             InitializeComponent();
         }
 
-        public FilternNach(FilterModel filterModel)
+        public FilternNach(FilterAttributesModel filterModel)
         {
             InitializeComponent();
             this.filterModel = filterModel;
@@ -47,33 +48,43 @@ namespace Postausgangsbuch
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            cmb1.SelectedIndex = 0;
-            cmb2.SelectedIndex = 0;
-            cmb3.SelectedIndex = 0;
-            cmb4.SelectedIndex = 0;
-            cmb5.SelectedIndex = 0;
-            datePicker1.SelectedDate = DateTime.Parse("01.01.1990");
-            datePicker2.SelectedDate = DateTime.Now;
-            //Clerk c = filterModel.Clerk;
+            filterModel.LoadFilterAttributesModel();
+            //cmb1.SelectedIndex = 0;
+            //cmb2.SelectedIndex = 0;
+            //cmb4.SelectedIndex = 0;
+            //cmb5.SelectedIndex = 0;
+            //datePicker1.SelectedDate = DateTime.Parse("01.01.1990");
+            //datePicker2.SelectedDate = DateTime.Now;
+            ////Clerk c = filterModel.Clerk;
             
-            //filterModel = new FilterModel { Clerk = c};
-            filterModel.RefillPacketList();
+            ////filterModel = new FilterModel { Clerk = c};
+            //filterModel.RefillPacketList();
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            filterModel.RefillPacketList();
+            filterModel.LoadFilterAttributesModel();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Statistics newStatisticWindow = new Statistics(filterModel);
-            newStatisticWindow.Show();
+            newStatisticWindow.Show(); //TODO: Make Window uneditable
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

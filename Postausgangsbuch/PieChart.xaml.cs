@@ -23,7 +23,7 @@ namespace Postausgangsbuch
     /// </summary>
     public partial class PieChart : UserControl
     {
-        private FilterLib.FilterModel filterModel;
+        private FilterLib.OverviewModel filterModel;
         public PieChart()
         {
             InitializeComponent();
@@ -32,7 +32,7 @@ namespace Postausgangsbuch
 
             DataContext = this;
         }
-        public PieChart(FilterModel filterModel)
+        public PieChart(OverviewModel filterModel)
         {
             InitializeComponent();
             this.filterModel = filterModel;

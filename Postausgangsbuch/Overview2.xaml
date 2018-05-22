@@ -1,0 +1,65 @@
+﻿<controls:MetroWindow x:Class="Postausgangsbuch.Overview2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Postausgangsbuch"
+        xmlns:model="clr-namespace:FilterLib;assembly=FilterLib"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        Title="Postausgangsbuch" Height="485.885" Width="964.291"
+        WindowStartupLocation="CenterScreen" Icon="PabLogo.ico" Closed="MetroWindow_Closed" ResizeMode="CanMinimize">
+    <Window.DataContext>
+        <model:OverviewModel/>
+    </Window.DataContext>
+    <Grid  Margin="5" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="397*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="2" Orientation="Horizontal" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right">
+            <Image Grid.Column="1" Grid.Row="0" Source="Icons/man.png"></Image>
+            <Label Name="lbl_Clerk" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="1" Grid.Row="0" FontSize="20" FontWeight="SemiBold" />
+        </StackPanel>
+        
+        <Grid Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+
+            </Grid.RowDefinitions>
+            <Grid.Resources>
+                <Style TargetType="controls:Tile">
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                    <Setter Property="VerticalContentAlignment" Value="Bottom"/>
+                    <Setter Property="Height" Value="Auto"/>
+                    <Setter Property="Width" Value="Auto"/>
+                    <Setter Property="Background" Value="Orange"/>
+                </Style>
+            </Grid.Resources>
+            <Grid.Background>
+                <ImageBrush/>
+            </Grid.Background>
+            <local:MyTile x:Name="Sendung"  Grid.Column="0" Grid.Row="0" Title="Neue Sendung erstellen" Image="Icons/email (1).png" Margin="5" Brush="#FF00204A"  MouseDown="showCreateNewPacketWindow"/>
+            <local:MyTile x:Name="Person"  Grid.Column="1" Grid.Row="0" Title="Neue Person erstellen" Image="Icons/agenda.png" Margin="5" Brush="#FF005792" MouseDown="showCreateNewPersonWindow"/>
+            <local:MyTile x:Name="Suchen"  Grid.Column="2" Grid.Row="0" Title="Sendung suchen" Image="Icons/email (2).png" Margin="5" Brush="#FF00BBF0" MouseDown="showSearchWindow"/>
+            <local:MyTile x:Name="Filter"  Grid.Column="3" Grid.Row="0" Title="Sendungen filtern" Image="Icons/email (4).png" Margin="5" Brush="#FFFDB44B" MouseDown="showFilterWindow"/>
+            <local:MyTile x:Name="Statistic"  Grid.Column="0" Grid.Row="1" Title="Statistik" Image="Icons/chart.png" Margin="5" Brush="#FFFDB44B" MouseDown="showStatisticWindow"/>
+            <local:MyTile x:Name="Filter1"  Grid.Column="1" Grid.Row="1" Title="Filter1" Image="Icons/email (6).png" Margin="5" Brush="#FF00BBF0" MouseDown="showSavedFilterWindow" />
+            <local:MyTile x:Name="Filter2"  Grid.Column="2" Grid.Row="1" Title="Filter2" Image="Icons/email (6).png" Margin="5" Brush="#FF005792" MouseDown="showSaved2FilterWindow"/>
+            <local:MyTile x:Name="LogoutTile"  Grid.Column="3" Grid.Row="1" Image="Icons/exit.png" Title="Logout" Margin="5" Brush="#FF00204A" MouseDown="doLogout"/>
+        </Grid>
+    </Grid>
+</controls:MetroWindow>
