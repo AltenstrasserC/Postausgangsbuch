@@ -13,10 +13,7 @@ namespace FilterLib
     public class PersonModel : ObservableObject
     {
         public PabDBContext db { get; set; }
-        public PersonModel()
-        {
-
-        }
+        public PersonModel() { }
         public PersonModel(PabDBContext db)
         {
             this.db = db;
@@ -41,9 +38,9 @@ namespace FilterLib
         private void DoCreateNewPerson(string obj)
         {
             var personAdresss = Person.Adress;
-            if (db.Cities.Count(x => x.PostCode.Equals(personAdresss.City.PostCode)) != 0)
+            if (db.Cities.Count(x => x.ZIP.Equals(personAdresss.City.ZIP)) != 0)
             {
-                var id = db.Cities.First(x => x.PostCode.Equals(personAdresss.City.PostCode));
+                var id = db.Cities.First(x => x.ZIP.Equals(personAdresss.City.ZIP));
                 personAdresss.City = id;
 
             }
@@ -52,7 +49,7 @@ namespace FilterLib
             //Adds Person to database
             db.Persons.Add(Person);
             db.SaveChanges();
-            MessageBox.Show($"Person {Person.Name} added!");
+            MessageBox.Show($"Person {Person.ToString()} added!");
 
             //ReloadsPersonModel
             LoadPersonModel();

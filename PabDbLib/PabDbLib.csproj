@@ -42,16 +42,6 @@
     <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroFramework.RunTime.1.2.0.3\lib\net40-Client\MetroFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="MetroFramework.Design, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroFramework.Design.1.2.0.3\lib\net40\MetroFramework.Design.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="MetroFramework.Fonts, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroFramework.Fonts.1.2.0.3\lib\net40\MetroFramework.Fonts.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -77,9 +67,13 @@
     <Compile Include="Migrations\201805221659096_bool.Designer.cs">
       <DependentUpon>201805221659096_bool.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805221701290_seedBool.cs" />
-    <Compile Include="Migrations\201805221701290_seedBool.Designer.cs">
-      <DependentUpon>201805221701290_seedBool.cs</DependentUpon>
+    <Compile Include="Migrations\201805231550176_DBNameSplitted.cs" />
+    <Compile Include="Migrations\201805231550176_DBNameSplitted.Designer.cs">
+      <DependentUpon>201805231550176_DBNameSplitted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805231645022_DBSeed.cs" />
+    <Compile Include="Migrations\201805231645022_DBSeed.Designer.cs">
+      <DependentUpon>201805231645022_DBSeed.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PabDBContext.cs" />
@@ -100,12 +94,12 @@
     <EmbeddedResource Include="Migrations\201805221659096_bool.resx">
       <DependentUpon>201805221659096_bool.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805221701290_seedBool.resx">
-      <DependentUpon>201805221701290_seedBool.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805231550176_DBNameSplitted.resx">
+      <DependentUpon>201805231550176_DBNameSplitted.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="MetroFramework.txt" />
+    <EmbeddedResource Include="Migrations\201805231645022_DBSeed.resx">
+      <DependentUpon>201805231645022_DBSeed.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

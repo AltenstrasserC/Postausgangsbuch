@@ -14,12 +14,22 @@ namespace FilterLib
     {
         public PabDBContext database;
         public Clerk Clerk { get; set; } = new Clerk();
-        public List<Filter> Filters { get; set; }
+        private ObservableCollection<Filter> filters;
+
+        public ObservableCollection<Filter> Filters
+        {
+            get { return filters; }
+            set {
+                filters = value;
+                RaisePropertyChangedEvent(nameof(Filters));
+            }
+        }
+        
         public OverviewModel() => database = new PabDBContext();
         public OverviewModel(PabDBContext db)
         {
             database = db;
-            Filters = db.Filters.ToList();
+            Filters = db.Filters.ToList().AsObservableCollection();
         }
     }
 }

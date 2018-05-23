@@ -63,9 +63,9 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="ID"/>
                 <DataGridTextColumn Binding="{Binding Sender.Name}" ClipboardContentBinding="{x:Null}" Header="Sender"/>
-                <DataGridTextColumn Binding="{Binding Sender.Adress.City.PostCode}" ClipboardContentBinding="{x:Null}" Header="Sender PLZ"/>
+                <DataGridTextColumn Binding="{Binding Sender.Adress.City.ZIP}" ClipboardContentBinding="{x:Null}" Header="Sender PLZ"/>
                 <DataGridTextColumn Binding="{Binding Receiver.Name}" ClipboardContentBinding="{x:Null}" Header="Empfänger"/>
-                <DataGridTextColumn Binding="{Binding Receiver.Adress.City.PostCode}" ClipboardContentBinding="{x:Null}" Header="Empfänger PLZ"/>
+                <DataGridTextColumn Binding="{Binding Receiver.Adress.City.ZIP}" ClipboardContentBinding="{x:Null}" Header="Empfänger PLZ"/>
                 <DataGridTextColumn Binding="{Binding Typ}" ClipboardContentBinding="{x:Null}" Header="Typ"/>
                 <DataGridTextColumn Binding="{Binding DeliveryDate, Mode=OneWay, StringFormat=dd.MM.yyyy}" ClipboardContentBinding="{x:Null}" Header="Zugestellt"/>
             </DataGrid.Columns>

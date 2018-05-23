@@ -27,13 +27,16 @@ namespace Postausgangsbuch
         Login l;
         private FilterLib.OverviewModel model;
         public Overview2()=> InitializeComponent();
+        public List<string> filternames;
+        
         public Overview2(OverviewModel model)
         {
             InitializeComponent();
             this.model = model;
             lbl_Clerk.Content = this.model.Clerk.Name;
-            var filternames = model.Filters.Select(x => x.Name).ToList();
-            if (filternames.Count >= 1) { Filter1.Title = filternames[0]; }
+            filternames = model.Filters.Select(x => x.FilterName).ToList();
+            if (filternames.Count == 1) { Filter1.Title = filternames[0]; }
+            if (filternames.Count > 1) { Filter2.Title = filternames[1]; }
         }
 
         private void showCreateNewPacketWindow(object sender, MouseButtonEventArgs e)
@@ -62,38 +65,52 @@ namespace Postausgangsbuch
 
         private void showSavedFilterWindow(object sender, MouseButtonEventArgs e)
         {
-            var filter = model.Filters.First();//TODO if filter1 null
-            FilternNach filternNachWindow = new FilternNach(new FilterAttributesModel(model.database, model.Clerk));
-            filternNachWindow.filterModel.Filtername = filter.Name;
-            filternNachWindow.filterModel.StartDate = filter.MinDate;
-            filternNachWindow.filterModel.EndDate = filter.MaxDate;
-            filternNachWindow.filterModel.Sender = filter.Sender;
-            filternNachWindow.filterModel.Receiver = filter.Receiver;
-            filternNachWindow.filterModel.SenderPostcode = filter.SenderZIP;
-            filternNachWindow.filterModel.ReceiverPostcode = filter.ReceiverZIP;
-            filternNachWindow.filterModel.BriefChecked = filter.Brief;
-            filternNachWindow.filterModel.EmailChecked = filter.Email;
-            filternNachWindow.filterModel.RsaChecked = filter.RsA;
-            filternNachWindow.filterModel.RsbChecked = filter.RsB;
-            filternNachWindow.Show();
+            if (model.Filters.Count >= 1)
+            {
+                var filter = model.Filters.First();
+                FilternNach filternNachWindow = new FilternNach(new FilterAttributesModel(model.database, model.Clerk));
+                filternNachWindow.filterModel.Filtername = filter.FilterName;
+                filternNachWindow.filterModel.StartDate = filter.MinDate;
+                filternNachWindow.filterModel.EndDate = filter.MaxDate;
+                filternNachWindow.filterModel.Sender = filter.Sender;
+                filternNachWindow.filterModel.Receiver = filter.Receiver;
+                filternNachWindow.filterModel.SenderPostcode = filter.SenderZIP;
+                filternNachWindow.filterModel.ReceiverPostcode = filter.ReceiverZIP;
+                filternNachWindow.filterModel.BriefChecked = filter.isLetter;
+                filternNachWindow.filterModel.EmailChecked = filter.isEmail;
+                filternNachWindow.filterModel.RsaChecked = filter.isRsA;
+                filternNachWindow.filterModel.RsbChecked = filter.isRsB;
+                filternNachWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show($"Kein Filter vorhanden!");
+            }
 
         }
         private void showSaved2FilterWindow(object sender, MouseButtonEventArgs e)
         {
-            var filter = model.Filters.Skip(1).First();//TODO if filter1 null
+            if (model.Filters.Count > 1)
+            {
+                var filter = model.Filters.Skip(1).First();
             FilternNach filternNachWindow = new FilternNach(new FilterAttributesModel(model.database, model.Clerk));
-            filternNachWindow.filterModel.Filtername = filter.Name;
+            filternNachWindow.filterModel.Filtername = filter.FilterName;
             filternNachWindow.filterModel.StartDate = filter.MinDate;
             filternNachWindow.filterModel.EndDate = filter.MinDate;
             filternNachWindow.filterModel.Sender = filter.Sender;
             filternNachWindow.filterModel.Receiver = filter.Receiver;
             filternNachWindow.filterModel.SenderPostcode = filter.SenderZIP;
             filternNachWindow.filterModel.ReceiverPostcode = filter.ReceiverZIP;
-            filternNachWindow.filterModel.BriefChecked = filter.Brief;
-            filternNachWindow.filterModel.EmailChecked = filter.Email;
-            filternNachWindow.filterModel.RsaChecked = filter.RsA;
-            filternNachWindow.filterModel.RsbChecked = filter.RsB;
+            filternNachWindow.filterModel.BriefChecked = filter.isLetter;
+            filternNachWindow.filterModel.EmailChecked = filter.isEmail;
+            filternNachWindow.filterModel.RsaChecked = filter.isRsA;
+            filternNachWindow.filterModel.RsbChecked = filter.isRsB;
             filternNachWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show($"Kein Filter vorhanden!");
+            }
         }
         private void showStatisticWindow(object sender, MouseButtonEventArgs e)
         {
@@ -108,14 +125,6 @@ namespace Postausgangsbuch
             l.Show();
         }
         
-        private void MetroWindow_Closed(object sender, EventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
-        private void Filter1_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
+        private void MetroWindow_Closed(object sender, EventArgs e) => Environment.Exit(0);
     }
 }

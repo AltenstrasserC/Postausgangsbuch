@@ -79,16 +79,16 @@
         <TextBox Grid.Column="1" Grid.Row="6" Text="{Binding SelectedPacket.Receiver.Email}"/>
         <TextBox Grid.Column="1" Grid.Row="7" Text="{Binding SelectedPacket.Receiver.Adress.StreetName}"/>
         <TextBox Grid.Column="1" Grid.Row="8" Text="{Binding SelectedPacket.Receiver.Adress.StreetNr}"/>
-        <TextBox Grid.Column="1" Grid.Row="9" Text="{Binding SelectedPacket.Receiver.Adress.City.PostCode}"/>
-        <TextBox Grid.Column="1" Grid.Row="10" Text="{Binding SelectedPacket.Receiver.Adress.City.Name}"/>
-        <CheckBox Grid.Column="1" Grid.Row="11" IsChecked="{Binding SelectedPacket.Receiver.Business}" IsEnabled="False" Margin="2"/>
-        
+        <TextBox Grid.Column="1" Grid.Row="9" Text="{Binding SelectedPacket.Receiver.Adress.City.ZIP}"/>
+        <TextBox Grid.Column="1" Grid.Row="10" Text="{Binding SelectedPacket.Receiver.Adress.City.CityName}"/>
+        <CheckBox Grid.Column="1" Grid.Row="11" IsChecked="{Binding SelectedPacket.Receiver.isCompany}" IsEnabled="False" Margin="2"/>
+
         <TextBox Grid.Column="3" Grid.Row="5" Text="{Binding SelectedPacket.Sender.Name}"/>
         <TextBox Grid.Column="3" Grid.Row="6" Text="{Binding SelectedPacket.Sender.Email}"/>
         <TextBox Grid.Column="3" Grid.Row="7" Text="{Binding SelectedPacket.Sender.Adress.StreetName}"/>
         <TextBox Grid.Column="3" Grid.Row="8" Text="{Binding SelectedPacket.Sender.Adress.StreetNr}"/>
-        <TextBox Grid.Column="3" Grid.Row="9" Text="{Binding SelectedPacket.Sender.Adress.City.PostCode}"/>
-        <TextBox Grid.Column="3" Grid.Row="10" Text="{Binding SelectedPacket.Sender.Adress.City.Name}"/>
-        <CheckBox Grid.Column="3" Grid.Row="11" IsChecked="{Binding SelectedPacket.Sender.Business}" IsEnabled="False" Margin="2"/>
+        <TextBox Grid.Column="3" Grid.Row="9" Text="{Binding SelectedPacket.Sender.Adress.City.ZIP}"/>
+        <TextBox Grid.Column="3" Grid.Row="10" Text="{Binding SelectedPacket.Sender.Adress.City.CityName}"/>
+        <CheckBox Grid.Column="3" Grid.Row="11" IsChecked="{Binding SelectedPacket.Sender.isCompany}" IsEnabled="False" Margin="2"/>
     </Grid>
 </controls:MetroWindow>

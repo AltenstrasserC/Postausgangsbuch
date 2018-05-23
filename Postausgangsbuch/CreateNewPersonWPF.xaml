@@ -15,16 +15,11 @@
     <Grid Background="#99119EDA" Margin="10,10,0,0" HorizontalAlignment="Left" Width="418" Height="312" VerticalAlignment="Top" >
         <Grid.Resources>
             <Style TargetType="TextBox">
-                <!--FontSize="16" 
-                BorderBrush="#66086F9E"
-                Margin="10,1,5,1"-->
                 <Setter Property="Margin" Value="10,1,5,1"/>
                 <Setter Property="BorderBrush" Value="#66086F9E"/>
                 <Setter Property="FontSize" Value="15"/>
             </Style>
             <Style TargetType="Label">
-                <!--FontSize="16"
-                HorizontalAlignment="Right"-->
                 <Setter Property="HorizontalAlignment" Value="Right"/>
                 <Setter Property="FontSize" Value="16"/>
             </Style>

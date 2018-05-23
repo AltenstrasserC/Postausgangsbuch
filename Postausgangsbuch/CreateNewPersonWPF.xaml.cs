@@ -23,10 +23,7 @@ namespace Postausgangsbuch
     public partial class CreateNewPersonWPF : MetroWindow
     {
         private FilterLib.PersonModel personModel;
-        public CreateNewPersonWPF()
-        {
-            InitializeComponent();
-        }
+        public CreateNewPersonWPF() => InitializeComponent();
 
         public CreateNewPersonWPF(PersonModel personModel)
         {
@@ -35,9 +32,6 @@ namespace Postausgangsbuch
             this.DataContext = personModel;
         }
 
-        private void btn_finish_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+        private void btn_finish_Click(object sender, RoutedEventArgs e) => this.Close();
     }
 }

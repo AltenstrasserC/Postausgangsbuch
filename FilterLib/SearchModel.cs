@@ -12,7 +12,8 @@ namespace FilterLib
     {
         private PabDBContext db;
         
-        
+        public Clerk Clerk { get; set; }
+        public Packet SelectedPacket { get; set; }
         private ObservableCollection<Packet> packets;
         public ObservableCollection<Packet> Packets
         {
@@ -23,10 +24,6 @@ namespace FilterLib
                 RaisePropertyChangedEvent(nameof(Packets));
             }
         }
-        
-        public Clerk Clerk { get; set; }
-        public Packet SelectedPacket { get; set; }
-
         public SearchModel() { }
         public SearchModel(PabDBContext db, Clerk clerk)
         {
@@ -35,11 +32,6 @@ namespace FilterLib
             LoadSearchModel();
         }
 
-        public void LoadSearchModel()
-        {
-            Packets = db.Packets.ToList().AsObservableCollection();
-            
-        }
-        
+        public void LoadSearchModel() => Packets = db.Packets.ToList().AsObservableCollection();
     }
 }

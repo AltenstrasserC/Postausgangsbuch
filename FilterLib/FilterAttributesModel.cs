@@ -168,10 +168,19 @@ namespace FilterLib
                 RaisePropertyChangedEvent(nameof(PacketCount));
                 RaisePropertyChangedEvent(nameof(Packets));
 
-                emailCount = Packets.Count(x => x.Typ.Equals("Email"));
-                briefCount = Packets.Count(x => x.Typ.Equals("Brief"));
-                rsaCount = Packets.Count(x => x.Typ.Equals("RsA"));
-                rsbCount = Packets.Count(x => x.Typ.Equals("RsB"));
+                try
+                {
+                    emailCount = Packets.Count(x => x.Typ.Equals("Email"));
+                    briefCount = Packets.Count(x => x.Typ.Equals("Brief"));
+                    rsaCount = Packets.Count(x => x.Typ.Equals("RsA"));
+                    rsbCount = Packets.Count(x => x.Typ.Equals("RsB"));
+                }
+                catch (Exception exc)
+                {
+                    //Shows Messagebox: Error!
+                    MessageBox.Show($"Error: {exc.Message}");
+                }
+                
             }
         }
         #endregion
@@ -206,8 +215,8 @@ namespace FilterLib
 
             Senders = db.Persons.ToList();
             Receivers = db.Persons.ToList();
-            SenderPostcodes = db.Cities.Select(x => x.PostCode).ToList();
-            ReceiverPostcodes = db.Cities.Select(x => x.PostCode).ToList();
+            SenderPostcodes = db.Cities.Select(x => x.ZIP).ToList();
+            ReceiverPostcodes = db.Cities.Select(x => x.ZIP).ToList();
 
             HoverTyp = null;
             SelectedYear = null;
@@ -227,11 +236,11 @@ namespace FilterLib
                 //Creates new Filterobject
                 Filter newFilter = new Filter();
                 newFilter.Clerk = Clerk;
-                newFilter.Name = Filtername;
-                newFilter.Brief = BriefChecked;
-                newFilter.Email = EmailChecked;
-                newFilter.RsA = RsaChecked;
-                newFilter.RsB = RsbChecked;
+                newFilter.FilterName = Filtername;
+                newFilter.isLetter = BriefChecked;
+                newFilter.isEmail = EmailChecked;
+                newFilter.isRsA = RsaChecked;
+                newFilter.isRsB = RsbChecked;
                 newFilter.MinDate = StartDate;
                 newFilter.MaxDate = EndDate;
                 newFilter.Sender = Sender;
@@ -276,11 +285,11 @@ namespace FilterLib
             }
             if (SenderPostcode != null)
             {
-                p = p.Where(x => x.Sender.Adress.City.PostCode == SenderPostcode).ToList();
+                p = p.Where(x => x.Sender.Adress.City.ZIP == SenderPostcode).ToList();
             }
             if (ReceiverPostcode != null)
             {
-                p = p.Where(x => x.Receiver.Adress.City.PostCode == ReceiverPostcode).ToList();
+                p = p.Where(x => x.Receiver.Adress.City.ZIP == ReceiverPostcode).ToList();
             }
             if (BriefChecked == true)
             {

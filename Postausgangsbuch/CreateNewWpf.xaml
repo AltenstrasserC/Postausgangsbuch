@@ -31,8 +31,8 @@
                             <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Name"/>
                             <DataGridTextColumn Binding="{Binding Adress.StreetName}" ClipboardContentBinding="{x:Null}" Header="Straße"/>
                             <DataGridTextColumn Binding="{Binding Adress.StreetNr}" ClipboardContentBinding="{x:Null}" Header="Nr."/>
-                            <DataGridTextColumn Binding="{Binding Adress.City.PostCode}" ClipboardContentBinding="{x:Null}" Header="Postleitzahl"/>
-                            <DataGridTextColumn Binding="{Binding Adress.City.Name}" ClipboardContentBinding="{x:Null}" Header="Ort"/>
+                            <DataGridTextColumn Binding="{Binding Adress.City.ZIP}" ClipboardContentBinding="{x:Null}" Header="Postleitzahl"/>
+                            <DataGridTextColumn Binding="{Binding Adress.City.CityName}" ClipboardContentBinding="{x:Null}" Header="Ort"/>
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button x:Name="btnAddNewReceiver" Content="Neue Person erstellen" HorizontalAlignment="Left" Margin="10,289,0,0" VerticalAlignment="Top" Width="142" Click="btnAddNewPerson_Click"/>
@@ -53,8 +53,8 @@
                             <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Name"/>
                             <DataGridTextColumn Binding="{Binding Adress.StreetName}" ClipboardContentBinding="{x:Null}" Header="Straße"/>
                             <DataGridTextColumn Binding="{Binding Adress.StreetNr}" ClipboardContentBinding="{x:Null}" Header="Nr."/>
-                            <DataGridTextColumn Binding="{Binding Adress.City.PostCode}" ClipboardContentBinding="{x:Null}" Header="Postleitzahl"/>
-                            <DataGridTextColumn Binding="{Binding Adress.City.Name}" ClipboardContentBinding="{x:Null}" Header="Ort"/>
+                            <DataGridTextColumn Binding="{Binding Adress.City.ZIP}" ClipboardContentBinding="{x:Null}" Header="Postleitzahl"/>
+                            <DataGridTextColumn Binding="{Binding Adress.City.CityName}" ClipboardContentBinding="{x:Null}" Header="Ort"/>
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button x:Name="btnAddNewReceiver_Copy" Content="Neue Person erstellen" HorizontalAlignment="Left" Margin="10,289,0,0" VerticalAlignment="Top" Width="142" Click="btnAddNewPerson_Click"/>

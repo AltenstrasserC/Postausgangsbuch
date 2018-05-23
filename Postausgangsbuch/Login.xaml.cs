@@ -36,18 +36,25 @@ namespace Postausgangsbuch
 
         private void btn_Login_Click(object sender, RoutedEventArgs e)
         {
-            
-            var username = txtBxUserName.Text;
-            if ((LoginData.Count(x => x.Name == username)== 1))
-            {
-                var login = LoginData.First(x => x.Name == username)
-                                     .Password;
-                if (login.Equals(pwBxPassword.Password))
+            try {
+                var username = txtBxUserName.Text;
+                if ((LoginData.Count(x => x.Name == username) == 1))
                 {
-                    filterModel.Clerk = db.Clerks.Single(x => x.Name == username);
-                    Overview2 overview = new Overview2(filterModel);
-                    overview.Show();
-                    this.Hide();
+                    var login = LoginData.First(x => x.Name == username)
+                                         .Password;
+                    if (login.Equals(pwBxPassword.Password))
+                    {
+                        filterModel.Clerk = db.Clerks.Single(x => x.Name == username);
+                        Overview2 overview = new Overview2(filterModel);
+                        overview.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        lblError.Content = "Benutzername/Passwort falsch";
+                        lblError.Foreground = Brushes.Red;
+                        lblError.Visibility = Visibility.Visible;
+                    }
                 }
                 else
                 {
@@ -55,13 +62,12 @@ namespace Postausgangsbuch
                     lblError.Foreground = Brushes.Red;
                     lblError.Visibility = Visibility.Visible;
                 }
-            }
-            else
-            {
+            } catch (Exception ex) {
                 lblError.Content = "Benutzername/Passwort falsch";
                 lblError.Foreground = Brushes.Red;
                 lblError.Visibility = Visibility.Visible;
             }
+            
         }
     }
 }

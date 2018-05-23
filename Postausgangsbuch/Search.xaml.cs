@@ -51,19 +51,19 @@ namespace Postausgangsbuch
             }
             else if (rdbtn_company.IsChecked == true)
             {
-                var list = packetList.Where(x => x.Receiver.Business || x.Sender.Business)
+                var list = packetList.Where(x => x.Receiver.isCompany || x.Sender.isCompany)
                                      .Where(x => x.Receiver.Name.ToLower().StartsWith(searchValue) || x.Sender.Name.ToLower().StartsWith(searchValue))
                                      .Select(x => x).ToList().AsObservableCollection();
                 if (list != null) filterModel.Packets = list;
             }
             else if (rdbtn_ZIP.IsChecked == true)
             {
-                if (packetList.Count(x => x.Receiver.Adress.City.PostCode.StartsWith(searchValue)) != 0 ||
-                    packetList.Count(x => x.Sender.Adress.City.PostCode.StartsWith(searchValue)) != 0)
+                if (packetList.Count(x => x.Receiver.Adress.City.ZIP.StartsWith(searchValue)) != 0 ||
+                    packetList.Count(x => x.Sender.Adress.City.ZIP.StartsWith(searchValue)) != 0)
                 {
                     var list = packetList.Where(
-                                                x => x.Receiver.Adress.City.PostCode.StartsWith(searchValue) ||
-                                                x.Sender.Adress.City.PostCode.StartsWith(searchValue)
+                                                x => x.Receiver.Adress.City.ZIP.StartsWith(searchValue) ||
+                                                x.Sender.Adress.City.ZIP.StartsWith(searchValue)
                                                 )
                                          .ToList()
                                          .AsObservableCollection();
@@ -85,10 +85,7 @@ namespace Postausgangsbuch
 
         }
 
-        private void Txt_Search_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            SearchPackets();
-        }
+        private void Txt_Search_TextChanged(object sender, TextChangedEventArgs e) => SearchPackets();
 
 
         private void Rdbtn_date_Checked(object sender, RoutedEventArgs e)
@@ -119,15 +116,9 @@ namespace Postausgangsbuch
             filterModel.Packets = list;
         }
 
-        private void DatePicked_Click(object sender, RoutedEventArgs e)
-        {
-            SearchDate();
+        private void DatePicked_Click(object sender, RoutedEventArgs e) => SearchDate();
 
-        }
-
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            filterModel.LoadSearchModel();
-        }
+        private void Window_Closed(object sender, EventArgs e) => filterModel.LoadSearchModel();
+        
     }
 }

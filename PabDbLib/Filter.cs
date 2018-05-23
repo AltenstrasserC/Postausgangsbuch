@@ -12,13 +12,13 @@ namespace PabDbLib
     public class Filter
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string FilterName { get; set; }
         public virtual Person Sender { get; set; }
         public virtual Person Receiver { get; set; }
-        public bool Brief { get; set; }
-        public bool Email { get; set; }
-        public bool RsA { get; set; }
-        public bool RsB { get; set; }
+        public bool isLetter { get; set; } = false;
+        public bool isEmail { get; set; } = false;
+        public bool isRsA { get; set; } = false;
+        public bool isRsB { get; set; } = false;
         public DateTime MinDate { get; set; }
         public DateTime MaxDate { get; set; }
         public string SenderZIP { get; set; }

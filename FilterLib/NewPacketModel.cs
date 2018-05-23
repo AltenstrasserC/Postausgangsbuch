@@ -75,7 +75,7 @@ namespace FilterLib
                 }
                 else
                 {
-                    People = db.Persons.Where(x => x.Name.StartsWith(SenderSearchTerm.ToLower())).ToList().AsObservableCollection();
+                    People = db.Persons.Where(x => x.LastName.StartsWith(SenderSearchTerm.ToLower())).ToList().AsObservableCollection();
                 }
                 RaisePropertyChangedEvent(nameof(People));
             }
@@ -94,7 +94,7 @@ namespace FilterLib
                 }
                 else
                 {
-                    People = db.Persons.Where(x => x.Name.StartsWith(ReceiverSearchTerm.ToLower())).ToList().AsObservableCollection();
+                    People = db.Persons.Where(x => x.LastName.StartsWith(ReceiverSearchTerm.ToLower())).ToList().AsObservableCollection();
                 }
                 RaisePropertyChangedEvent(nameof(People));
             }

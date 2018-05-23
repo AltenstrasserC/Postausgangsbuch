@@ -58,21 +58,19 @@ namespace Postausgangsbuch
         private void SearchPersonSender()
         {
             var searchValue = txtNameSender.Text;
-            var list = db.Persons.Where(x => x.Name.StartsWith(searchValue)).Select(x => x);
+            var list = db.Persons.Where(x => x.LastName.StartsWith(searchValue)).Select(x => x);
             grdSender.Items.Clear();
             txtNameSender.Text = "";
             searchValue = null;
-            //if (list != null) AddToList(list, txtNameSender);
         }
 
         private void SearchPersonReceiver()
         {
             var searchValue = txtNameReceiver.Text;
-            var list = db.Persons.Where(x => x.Name.StartsWith(searchValue)).Select(x => x);
+            var list = db.Persons.Where(x => x.LastName.StartsWith(searchValue)).Select(x => x);
             grdReceiver.Items.Clear();
             txtNameReceiver.Text = "";
             searchValue = null;
-            //if (list != null) AddToList(list, txtNameReceiver);
         }
 
         private void btnChoosePath_Click(object sender, RoutedEventArgs e)
@@ -83,16 +81,9 @@ namespace Postausgangsbuch
                 txtFilepath.Text = openFileDialog.FileName;
             }
         }
-        
 
-        private void btnCreateNew_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+        private void btnCreateNew_Click(object sender, RoutedEventArgs e) => this.Close();
 
-        private void btnclose_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+        private void btnclose_Click(object sender, RoutedEventArgs e) => this.Close();
     }
 }

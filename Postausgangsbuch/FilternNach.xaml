@@ -7,7 +7,7 @@
         xmlns:model="clr-namespace:FilterLib;assembly=FilterLib"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
-        Title="Sendungen filtern" Height="485.885" Width="964.291" Loaded="Window_Loaded"
+        Title="Sendungen filtern" Height="485.885" Width="964.291"
         Closed="Window_Closed" WindowStartupLocation="CenterScreen" Icon="PabLogo.ico" ResizeMode="CanMinimize">
     <Window.DataContext>
         <model:FilterAttributesModel/>
@@ -41,9 +41,9 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="ID"/>
                     <DataGridTextColumn Binding="{Binding Sender.Name}" ClipboardContentBinding="{x:Null}" Header="Sender"/>
-                    <DataGridTextColumn Binding="{Binding Sender.Adress.City.PostCode}" ClipboardContentBinding="{x:Null}" Header="Sender PLZ"/>
+                    <DataGridTextColumn Binding="{Binding Sender.Adress.City.ZIP}" ClipboardContentBinding="{x:Null}" Header="Sender PLZ"/>
                     <DataGridTextColumn Binding="{Binding Receiver.Name}" ClipboardContentBinding="{x:Null}" Header="Empfänger"/>
-                    <DataGridTextColumn Binding="{Binding Receiver.Adress.City.PostCode}" ClipboardContentBinding="{x:Null}" Header="Empfänger PLZ"/>
+                    <DataGridTextColumn Binding="{Binding Receiver.Adress.City.ZIP}" ClipboardContentBinding="{x:Null}" Header="Empfänger PLZ"/>
                     <DataGridTextColumn Binding="{Binding Typ}" ClipboardContentBinding="{x:Null}" Header="Typ"/>
                     <DataGridTextColumn Binding="{Binding DeliveryDate, StringFormat=dd.MM.yyyy}" ClipboardContentBinding="{x:Null}" Header="Zugestellt"/>
                 </DataGrid.Columns>
@@ -55,16 +55,11 @@
               Margin="5">
             <Grid.Resources>
                 <Style TargetType="TextBox">
-                    <!--FontSize="16" 
-                BorderBrush="#66086F9E"
-                Margin="10,1,5,1"-->
                     <Setter Property="Margin" Value="10,1,5,1"/>
                     <Setter Property="BorderBrush" Value="#66086F9E"/>
                     <Setter Property="FontSize" Value="15"/>
                 </Style>
                 <Style TargetType="Label">
-                    <!--FontSize="16"
-                HorizontalAlignment="Right"-->
                     <Setter Property="HorizontalAlignment" Value="Right"/>
                     <Setter Property="FontSize" Value="13"/>
                 </Style>
@@ -118,7 +113,7 @@
         </Grid>
         <Button Content="Filter zurücksetzen" Click="Button_Click" Grid.Column="0" Grid.Row="1" Margin="5"/>
         <TextBox Name ="txtfiltername" TextWrapping="Wrap" Text="{Binding Filtername, Mode=TwoWay}" Grid.Column="0" Grid.Row="2" FontSize="14" controls:TextBoxHelper.Watermark="Filterbezeichnung" Margin="5"/>
-        <Button Name="btnSaveFilter"  Content="Filter speichern" Command="{Binding CreateFilter, Mode=OneWay}" Click="Button_Click_2" Grid.Column="1" Grid.Row="2" Margin="5">
+        <Button Name="btnSaveFilter"  Content="Filter speichern" Command="{Binding CreateFilter, Mode=OneWay}" Grid.Column="1" Grid.Row="2" Margin="5">
             <Button.IsEnabled>
                 <MultiBinding Converter="{StaticResource HasAllTextConverter}">
                     <Binding ElementName="txtfiltername" Path="Text" />
