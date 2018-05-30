@@ -303,7 +303,7 @@ namespace FilterLib
             {
                 p = p.Where(x => x.Typ == "RsA").ToList();
             }
-            if (RsaChecked == true)
+            if (RsbChecked == true)
             {
                 p = p.Where(x => x.Typ == "RsB").ToList();
             }

@@ -47,7 +47,7 @@ namespace Postausgangsbuch
                         filterModel.Clerk = db.Clerks.Single(x => x.Name == username);
                         Overview2 overview = new Overview2(filterModel);
                         overview.Show();
-                        this.Hide();
+                        this.Close();
                     }
                     else
                     {

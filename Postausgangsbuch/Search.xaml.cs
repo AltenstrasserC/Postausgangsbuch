@@ -44,10 +44,14 @@ namespace Postausgangsbuch
 
             if (rdbtn_name.IsChecked == true)
             {
-                var list = packetList.Where(x => x.Receiver.Name.ToLower().StartsWith(searchValue) || x.Sender.Name.ToLower().StartsWith(searchValue))
-                                     .Select(x => x);
 
+                var list = packetList.Where(x => x.Receiver.LastName.ToLower().StartsWith(searchValue) || x.Sender.LastName.ToLower().StartsWith(searchValue))
+                         .Select(x => x);
                 if (list != null) filterModel.Packets = list.ToList().AsObservableCollection();
+
+
+
+
             }
             else if (rdbtn_company.IsChecked == true)
             {
@@ -119,6 +123,6 @@ namespace Postausgangsbuch
         private void DatePicked_Click(object sender, RoutedEventArgs e) => SearchDate();
 
         private void Window_Closed(object sender, EventArgs e) => filterModel.LoadSearchModel();
-        
+
     }
 }

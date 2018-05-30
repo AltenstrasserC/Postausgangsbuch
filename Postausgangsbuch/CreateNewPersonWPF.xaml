@@ -7,12 +7,12 @@
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:model="clr-namespace:FilterLib;assembly=FilterLib"
         mc:Ignorable="d"
-        Title="Neue Person erstellen" Height="363" Width="446" WindowStartupLocation="CenterScreen" Icon="PabLogo.ico" Topmost="True">
+        Title="Neue Person erstellen" Height="400" Width="446" WindowStartupLocation="CenterScreen" Icon="PabLogo.ico" Topmost="True">
     <Window.DataContext>
         <model:PersonModel/>
     </Window.DataContext>
 
-    <Grid Background="#99119EDA" Margin="10,10,0,0" HorizontalAlignment="Left" Width="418" Height="312" VerticalAlignment="Top" >
+    <Grid Background="#99119EDA" Margin="10,10,10,10" >
         <Grid.Resources>
             <Style TargetType="TextBox">
                 <Setter Property="Margin" Value="10,1,5,1"/>
@@ -40,46 +40,53 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="15"/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="109*"/>
             <ColumnDefinition Width="199*"/>
             <ColumnDefinition Width="110*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Name:" Grid.Row="1" Grid.Column="0" Width="56"/>
-        <TextBox x:Name="txtbxName" 
+        <Label Content="Vorname:" Grid.Row="1" Grid.Column="0" />
+        <TextBox x:Name="txtbxFirstName" 
                 Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
-                Text="{Binding Person.Name}"/>
-        <Label Content="Straße:" Grid.Row="3" Grid.Column="0" Width="58"/>
-        <Label Content="Nr:" Grid.Row="5" Grid.Column="0" Width="31"/>
-        <TextBox x:Name="txtBxStreet" 
+                Text="{Binding Person.FirstName}"/>
+        <Label Content="Nachname:" Grid.Row="3" Grid.Column="0" />
+        <TextBox x:Name="txtbxLastName" 
                 Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
-                Text="{Binding Person.Adress.StreetName}" />
-        <TextBox x:Name="txtBxStreetNr"
+                Text="{Binding Person.LastName}"/>
+        <Label Content="Straße:" Grid.Row="5" Grid.Column="0" Width="58"/>
+        <TextBox x:Name="txtBxStreet" 
                 Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
+                Text="{Binding Person.Adress.StreetName}" />
+        <Label Content="Nr:" Grid.Row="7" Grid.Column="0" Width="31"/>
+        <TextBox x:Name="txtBxStreetNr"
+                Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"
                 Text="{Binding Person.Adress.StreetNr}" 
                 />
-        <Label Content="Postleitzahl:" Grid.Row="7" Grid.Column="0" Width="93"/>
-        <Label Content="Stadt:" Grid.Row="9" Grid.Column="0" Width="50"/>
+        <Label Content="Postleitzahl:" Grid.Row="9" Grid.Column="0" Width="93"/>
+        <Label Content="Stadt:" Grid.Row="11" Grid.Column="0" Width="50"/>
         <TextBox x:Name="txtBxPLZ"
-                Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"
-                Text="{Binding Person.Adress.City.PostCode}"/>
-        <TextBox x:Name="txtBxCity"
                 Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2"
-                Text="{Binding Person.Adress.City.Name}"/>
-        <Label Content="E-Mail:" Grid.Row="11" Grid.Column="0" Width="58"/>
-        <Label Content="Unternehmer:" Grid.Row="13" Grid.Column="0" Width="107"/>
-        <TextBox x:Name="txtBxMail" 
+                Text="{Binding Person.Adress.City.ZIP}"/>
+        <TextBox x:Name="txtBxCity"
                 Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2"
+                Text="{Binding Person.Adress.City.CityName}"/>
+        <Label Content="E-Mail:" Grid.Row="13" Grid.Column="0" Width="58"/>
+        <Label Content="Unternehmer:" Grid.Row="15" Grid.Column="0" Width="107"/>
+        <TextBox x:Name="txtBxMail" 
+                Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2"
                 Text="{Binding Person.Email}"/>
         <CheckBox x:Name="chckBx_Company" 
-                Grid.Row="13" Grid.Column="1" 
+                Grid.Row="15" Grid.Column="1" 
                 IsChecked="{Binding Person.Business}"
                 Margin="10,1,5,1"/>
-        <Button x:Name="btn_finish" Content="Neu erstellen" Command="{Binding CreateNewPerson, Mode=OneWay}" Click="btn_finish_Click" Grid.Column="2" Grid.Row="13" Margin="1,1,5,5" ToolTipService.ShowOnDisabled="True" ToolTip="Alle Felder ausfüllen um neue Person zu erstellen" >
+        <Button x:Name="btn_finish" Content="Neu erstellen" Command="{Binding CreateNewPerson, Mode=OneWay}" Click="btn_finish_Click" Grid.Column="2" Grid.Row="15" Margin="1,1,5,5" ToolTipService.ShowOnDisabled="True" ToolTip="Alle Felder ausfüllen um neue Person zu erstellen" >
             <Button.IsEnabled>
                 <MultiBinding Converter="{StaticResource HasAllTextConverter}">
-                    <Binding ElementName="txtbxName" Path="Text" />
+                    <Binding ElementName="txtbxFirstName" Path="Text" />
+                    <Binding ElementName="txtbxLastName" Path="Text" />
                     <Binding ElementName="txtBxStreet" Path="Text" />
                     <Binding ElementName="txtBxStreetNr" Path="Text" />
                     <Binding ElementName="txtBxPLZ" Path="Text" />
